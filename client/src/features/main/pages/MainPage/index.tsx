@@ -6,7 +6,7 @@ export const MainPage: FC = () => {
   return (
     <>
       <StyledFaceBookIcon />
-      Салам Пополам! !!!
+      Салам Пополам! !!!1111
     </>
   );
 };
