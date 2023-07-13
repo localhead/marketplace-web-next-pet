@@ -1,15 +1,16 @@
-import { colors } from '../utils';
+import { colors } from "../utils";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledTag = styled.div`
-  padding: 3px 13px;
+  padding: 5px 25px;
+  width: fit-content;
+  height: fit-content;
 
-  border: 1px solid ${colors.blueGray};
-  border-radius: 11px;
-
-  text-align: center;
+  border-radius: 24px;
+  display: inline;
   line-height: 120%;
-  font-size: 11px;
+  font-size: 14px;
+  color: ${colors.dark};
   background-color: ${colors.white};
 `;

@@ -1,15 +1,13 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
 const nextConfig = {
   reactStrictMode: false,
-  transpilePackages: ["antd"],
   compiler: {
     styledComponents: true,
   },
-  trailingSlash: true,
+  images: {
+    domains: ["data.halalguide.me"],
+  },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -22,8 +20,11 @@ const nextConfig = {
       use: ["@svgr/webpack"],
       resourceQuery: { not: [/url/] },
     });
+
     return config;
   },
+
+  trailingSlash: true,
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;

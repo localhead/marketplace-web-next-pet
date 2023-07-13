@@ -1,14 +1,15 @@
-import { API_URL } from "@features/api";
-import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 import { AppBaseQueryParams } from "./types";
 
+import { API_URL } from "@features/api";
+import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+
 export const appBaseQuery = (params?: AppBaseQueryParams) => {
-  // INIT_CITY
-  const { subpath, api = API_URL, ...restParams } = params ?? {};
-  // INIT_CITY
+  const { subpath, ...restParams } = params ?? {};
+
+  // создание запроса: 4
+  // меняем API_URL
   return fetchBaseQuery({
-    baseUrl: `${api}/${subpath}`,
-    timeout: 3000,
+    baseUrl: `${API_URL}/${subpath}`,
 
     ...restParams,
   });

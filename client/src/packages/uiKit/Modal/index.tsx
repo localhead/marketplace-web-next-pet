@@ -6,12 +6,14 @@ import {
   StyledModalTitle,
   StyledOverlay,
   StyledPopover,
-} from './styles';
+} from "./styles";
 
-import { useDisableBodyScroll } from '../hooks';
+import { useDisableBodyScroll } from "../hooks";
 
-import { PopoverPortal } from '@packages/uiKit/PopoverPortal';
-import React, { FC, PropsWithChildren } from 'react';
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
+import { CaretLeftIcon } from "@packages/icons";
+import { PopoverPortal } from "@packages/uiKit/PopoverPortal";
+import React, { FC, PropsWithChildren } from "react";
 
 export interface ModalProps extends PropsWithChildren {
   className?: string;
@@ -41,16 +43,22 @@ const RenderedModal: FC<ModalProps> = (props) => {
 
   useDisableBodyScroll(isOpen);
 
+  const windowWidth = useWindowWidth();
+
+  const isDesktop = windowWidth === "desktop";
+  const isMobile = windowWidth === "mobile";
+
   return (
     <PopoverPortal>
       <StyledPopover>
         <StyledOverlay onClick={onClose} />
         <StyledModal $width={width} $isStretched={isStretched}>
           <StyledModalHeader>
+            {isMobile && <CaretLeftIcon size={20} onClick={onClose} />}
             <StyledModalTitle $isStretched={isStretched}>
               {title}
             </StyledModalTitle>
-            <StyledModalCloseButton onClick={onClose} />
+            {!isMobile && <StyledModalCloseButton onClick={onClose} />}
           </StyledModalHeader>
           <StyledModalContent>{children}</StyledModalContent>
         </StyledModal>

@@ -1,7 +1,7 @@
 import { StyledInput } from "./styles";
 
 import { Field, FieldProps } from "@packages/uiKit/Field";
-import React, { forwardRef, InputHTMLAttributes, memo, useMemo } from "react";
+import React, { InputHTMLAttributes, forwardRef, memo, useMemo } from "react";
 
 export interface InputFieldProps extends Omit<FieldProps, "children"> {
   value?: string | null;

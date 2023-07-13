@@ -1,5 +1,5 @@
-import { colors } from '@packages/uiKit/utils';
-import styled from 'styled-components';
+import { colors } from "@packages/uiKit/utils";
+import styled from "styled-components";
 
 export const StyledInput = styled.input`
   width: 100%;

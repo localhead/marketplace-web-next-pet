@@ -1,32 +1,11 @@
-import { colors } from "../utils";
-
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StyledSliderDots = styled.div``;
 
 export const StyledDots = styled.div`
   display: flex;
-  bottom: 0;
-  gap: 7px;
-
+  margin-top: 25px;
   justify-content: center;
-`;
-
-export const StyledDot = styled.div<{
-  $isActive: boolean;
-}>`
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  cursor: pointer;
-
-  border: 1px solid ${colors.gray16};
-  ${({ $isActive }) =>
-    $isActive &&
-    css`
-      background-color: ${colors.dark};
-      border-color: ${colors.dark};
-    `}
 `;
 
 export const StyledChildrenContainer = styled.div`

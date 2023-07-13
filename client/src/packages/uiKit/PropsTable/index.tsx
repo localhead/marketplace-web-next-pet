@@ -1,14 +1,14 @@
-import { StyledLabel, StyledPropsTable, StyledValue } from './styles';
+import { StyledPropsTable, StyledValue } from "./styles";
 
-import { PropsTableItem } from './types';
-
-import React, { FC, Fragment, memo } from 'react';
+import { MockTableStockItem } from "@features/stocks/pages/StockDetailPage/InnerContentSection/DividendsCalendarSection/mock";
+import { toCurrency, toPercent } from "@utils/formatToLocaleString";
+import React, { FC, Fragment, memo } from "react";
 
 export interface PropsTableProps {
   className?: string;
   style?: React.CSSProperties;
 
-  items: PropsTableItem[];
+  items: MockTableStockItem[];
 }
 
 const _PropsTable: FC<PropsTableProps> = (props) => {
@@ -19,8 +19,17 @@ const _PropsTable: FC<PropsTableProps> = (props) => {
       {items.map((item, index) => {
         return (
           <Fragment key={index}>
-            <StyledLabel>{item.label}</StyledLabel>
-            <StyledValue>{item.value}</StyledValue>
+            <StyledValue $variant="default">{item.dateInclude}</StyledValue>
+            <StyledValue $variant="default">{item.dateForm}</StyledValue>
+            <StyledValue $variant="bold">
+              {toPercent(item.dividendIncome, 2)}
+            </StyledValue>
+            <StyledValue $variant="bold">
+              {toCurrency(item.dividendPrice, {
+                currency: "RUB",
+                showPennies: true,
+              })}
+            </StyledValue>
           </Fragment>
         );
       })}

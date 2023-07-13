@@ -1,0 +1,11 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path vector-effect="non-scaling-stroke" d="M32.9873 5.73324L56.9873 15.3332C57.9206 15.7065 58.6673 16.8265 58.6673 17.8132V26.6665C58.6673 28.1332 57.4673 29.3332 56.0006 29.3332H8.00065C6.53398 29.3332 5.33398 28.1332 5.33398 26.6665V17.8132C5.33398 16.8265 6.08066 15.7065 7.014 15.3332L31.014 5.73324C31.5473 5.51991 32.454 5.51991 32.9873 5.73324Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M58.6673 58.6667H5.33398V50.6667C5.33398 49.2 6.53398 48 8.00065 48H56.0006C57.4673 48 58.6673 49.2 58.6673 50.6667V58.6667Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M10.666 48.0002V29.3335" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M21.334 48.0002V29.3335" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M32 48.0002V29.3335" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M42.666 48.0002V29.3335" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M53.334 48.0002V29.3335" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M2.66602 58.6665H61.3327" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path vector-effect="non-scaling-stroke" d="M32 22.6665C34.2091 22.6665 36 20.8756 36 18.6665C36 16.4574 34.2091 14.6665 32 14.6665C29.7909 14.6665 28 16.4574 28 18.6665C28 20.8756 29.7909 22.6665 32 22.6665Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

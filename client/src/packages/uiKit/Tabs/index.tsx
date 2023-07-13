@@ -1,6 +1,6 @@
 import { StyledTabItem, StyledTabs } from "./styles";
 
-import { TabsTabItem, TabsVariant } from "./types";
+import { TabsSize, TabsTabItem, TabsVariant } from "./types";
 
 import React from "react";
 
@@ -14,6 +14,7 @@ export interface TabsProps<
   onChange?: (value: ValueType) => void;
   variant?: TabsVariant;
   scroll?: boolean;
+  size?: TabsSize;
 }
 
 export const Tabs = <ValueType extends string | number = string | number>(
@@ -22,6 +23,7 @@ export const Tabs = <ValueType extends string | number = string | number>(
   const {
     tabs,
     scroll = false,
+    size = "default",
     value,
     onChange,
     variant = "round",
@@ -29,27 +31,30 @@ export const Tabs = <ValueType extends string | number = string | number>(
   } = props;
 
   return (
-    <StyledTabs variant={variant} scroll={scroll} {...restProps}>
-      {tabs.map((tab) => {
-        const isSelected = Boolean(value) && value === tab.value;
-        const onClickHandler =
-          !isSelected && onChange
-            ? () => {
-                onChange(tab.value);
-              }
-            : undefined;
+    <>
+      <StyledTabs variant={variant} scroll={scroll} {...restProps}>
+        {tabs.map((tab) => {
+          const isSelected = Boolean(value) && value === tab.value;
+          const onClickHandler =
+            !isSelected && onChange
+              ? () => {
+                  onChange(tab.value);
+                }
+              : undefined;
 
-        return (
-          <StyledTabItem
-            key={tab.value}
-            onClick={onClickHandler}
-            isSelected={isSelected}
-            variant={variant}
-          >
-            {tab.label}
-          </StyledTabItem>
-        );
-      })}
-    </StyledTabs>
+          return (
+            <StyledTabItem
+              key={tab.value}
+              onClick={onClickHandler}
+              isSelected={isSelected}
+              variant={variant}
+              $size={size}
+            >
+              {tab.label}
+            </StyledTabItem>
+          );
+        })}
+      </StyledTabs>
+    </>
   );
 };

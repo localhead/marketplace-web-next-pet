@@ -1,14 +1,4 @@
 import {
-  ForwardedRef,
-  forwardRef,
-  ReactNode,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import useOutsideClick from "../utils/useOutsideClick";
-import {
   DropdownItem,
   StyledButton,
   StyledCaretDownIcon,
@@ -23,6 +13,18 @@ import {
 } from "./styles";
 import { SelectOption, SelectSize, SelectValue, SelectVariant } from "./types";
 
+import useOutsideClick from "../utils/useOutsideClick";
+
+import {
+  ForwardedRef,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
 export type SelectProps<ValueType extends SelectValue> = {
   options: SelectOption<ValueType>[];
   value?: ValueType | null;
@@ -32,9 +34,6 @@ export type SelectProps<ValueType extends SelectValue> = {
 
   left?: ReactNode;
   disabled?: boolean;
-  tabIndex?: number;
-
-  disableCaret?: boolean;
 
   className?: string;
   styles?: React.CSSProperties;
@@ -52,7 +51,6 @@ const _Select = <ValueType extends SelectValue = SelectValue>(
 ) => {
   const {
     options,
-    disableCaret = false,
     value,
     left,
     onChange,
@@ -104,7 +102,6 @@ const _Select = <ValueType extends SelectValue = SelectValue>(
         ref={selectRef}
         onClick={onButtonClickHandler}
         disabled={disabled}
-        type="button"
       >
         {left && <StyledLeftContainer>{left}</StyledLeftContainer>}
         {selectedOption ? (
@@ -114,12 +111,12 @@ const _Select = <ValueType extends SelectValue = SelectValue>(
         )}
         {cleanable ? (
           !isValueSelected ? (
-            !disableCaret && <StyledCaretDownIcon $isVisible={isVisible} />
+            <StyledCaretDownIcon $isVisible={isVisible} />
           ) : (
             <StyledCloseIcon onClick={closeClickHandler} />
           )
         ) : (
-          !disableCaret && <StyledCaretDownIcon $isVisible={isVisible} />
+          <StyledCaretDownIcon $isVisible={isVisible} />
         )}
       </StyledButton>
 

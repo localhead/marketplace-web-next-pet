@@ -1,9 +1,9 @@
-import { Typography } from '../Typography';
-import { colors } from '../utils';
+import { Typography } from "../Typography";
+import { colors } from "../utils";
 
-import { CaretLeftIcon } from '@packages/icons';
-import { Button } from '@packages/uiKit/Button';
-import styled, { css } from 'styled-components';
+import { CaretLeftIcon } from "@packages/icons";
+import { Button } from "@packages/uiKit/Button";
+import styled, { css } from "styled-components";
 
 export const StyledPagination = styled.div`
   display: flex;
@@ -23,11 +23,13 @@ export const StyledPrevButton = styled(Button).attrs({
 `;
 
 export const StyledPageButton = styled(Button).attrs({
-  variant: 'outlined',
+  variant: "outlined",
 })<{ $isCurrent: boolean }>`
   min-width: 38px;
-  height: 38px;
-  padding: 14px;
+  height: 28px;
+  width: 38px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 10px;
 
   ${({ $isCurrent }) =>
     $isCurrent
@@ -42,13 +44,13 @@ export const StyledPageButton = styled(Button).attrs({
           }
         `
       : css`
-          background-color: ${colors.white};
-          border: 1px solid ${colors.gray7};
-          color: ${colors.dark};
+          background-color: ${colors.backgroundColorHeader};
+          border: 1px solid ${colors.backgroundColorHeader};
+          color: ${colors.gray8};
           &:hover {
-            background-color: ${colors.gray9};
-            border: 1px solid ${colors.gray7};
-            color: ${colors.dark};
+            background-color: ${colors.white};
+            border: 1px solid ${colors.backgroundColorHeader};
+            color: ${colors.gray8};
           }
         `}
 `;

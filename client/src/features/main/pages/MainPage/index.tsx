@@ -1,12 +1,14 @@
-import { FaceBookIcon } from "@packages/icons";
+import { MainLayout } from "@layouts/MainLayout";
 import { FC } from "react";
-import { StyledFaceBookIcon } from "./styles";
+
+import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 
 export const MainPage: FC = () => {
+  const width = useWindowWidth();
+
   return (
-    <>
-      <StyledFaceBookIcon />
-      Салам Пополам! !!!1111
-    </>
+    <MainLayout>
+      <MainLayout.Content></MainLayout.Content>
+    </MainLayout>
   );
 };

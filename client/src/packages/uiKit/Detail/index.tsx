@@ -3,18 +3,18 @@ import {
   StyledDetail,
   StyledDetailHeader,
   StyledTitle,
-} from './styles';
+} from "./styles";
 
-import { IconButton } from '../IconButton';
+import { IconButton } from "../IconButton";
 
-import { MinusIcon, PlusIcon } from '@packages/icons';
+import { ArrowDownIcon, ArrowUpIcon } from "@packages/icons";
 import React, {
   FC,
   memo,
   PropsWithChildren,
   useCallback,
   useState,
-} from 'react';
+} from "react";
 
 export interface DetailProps extends PropsWithChildren {
   className?: string;
@@ -38,8 +38,12 @@ const _Detail: FC<DetailProps> = (props) => {
           {title}
         </StyledTitle>
 
-        <IconButton variant="text" onClick={toggleOpenHandler}>
-          {isOpen ? <MinusIcon size={32} /> : <PlusIcon size={32} />}
+        <IconButton
+          variant="primary-text"
+          size="small"
+          onClick={toggleOpenHandler}
+        >
+          {isOpen ? <ArrowUpIcon size={20} /> : <ArrowDownIcon size={20} />}
         </IconButton>
       </StyledDetailHeader>
 

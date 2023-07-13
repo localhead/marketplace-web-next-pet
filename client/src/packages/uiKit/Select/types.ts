@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export type SelectValue = number | string;
 export interface SelectOption<ValueType extends SelectValue = string | number> {
@@ -7,5 +7,5 @@ export interface SelectOption<ValueType extends SelectValue = string | number> {
   icon?: React.ReactNode;
 }
 
-export type SelectVariant = "filled" | "outlined";
-export type SelectSize = "medium" | "small" | "noCaret";
+export type SelectVariant = 'filled' | 'outlined';
+export type SelectSize = 'medium' | 'small';

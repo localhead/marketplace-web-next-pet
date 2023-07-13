@@ -30,6 +30,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       variant = "outlined",
       size = "medium",
       className,
+
       style,
       ...restProps
     } = props;
@@ -53,6 +54,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       >
         {left && <StyledLeftContainer>{left}</StyledLeftContainer>}
         <StyledInput ref={ref} onChange={onChangeHandler} {...restProps} />
+
         {right && <StyledRightContainer>{right}</StyledRightContainer>}
       </StyledInputContainer>
     );

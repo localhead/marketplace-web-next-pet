@@ -1,1 +1,1 @@
-export const ACCESS_TOKEN_HEADER_KEY = "Authorization";
+export const ACCESS_TOKEN_HEADER_KEY = 'Authorization';

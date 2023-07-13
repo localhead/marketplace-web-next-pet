@@ -1,64 +1,81 @@
-import { StyledGrid, StyledGridItem, StyledMultipleSlider } from "./styles";
+import {
+  StyledGrid,
+  StyledMultipleSlider,
+  StyledOverflowContainer,
+  StyledSlideButtonContainer,
+  StyledSlidesContainer,
+} from "./styles";
 
-import React, { Children, FC, memo, PropsWithChildren, useMemo } from "react";
+import { getMultipleSliderGridStyle } from "./utils";
 
-export interface MultipleSliderProps extends PropsWithChildren {
+import { BaseSlider } from "@features/main/components/BaseSlider";
+import React, { FC, memo, ReactNode, useEffect, useRef, useState } from "react";
+import { useMultipleSlider } from "./hooks";
+
+export interface MultipleSliderProps {
   className?: string;
   style?: React.CSSProperties;
-  itemsInRow: number;
-  items: number;
-  gap: number;
-  currentOffset: number;
-  isSquare?: boolean;
-  lazy?: boolean;
+  items?: ReactNode[];
+  cols: number;
+  gap?: number;
+  step?: number;
 }
 
 const _MultipleSlider: FC<MultipleSliderProps> = (props) => {
-  const {
-    children,
-    itemsInRow,
-    items,
+  const { items, cols, gap = 0, step = 1, ...restProps } = props;
+
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const [currentWidth, setCurrentWidth] = useState(0);
+
+  useEffect(() => {
+    const resizeCallback: ResizeObserverCallback = (entries) => {
+      if (entries.length > 0) {
+        const entry = entries[0];
+        setCurrentWidth(entry.contentRect.width);
+      }
+    };
+    const ro = new ResizeObserver(resizeCallback);
+
+    if (ref.current) {
+      ro.observe(ref.current);
+    }
+
+    return () => {
+      ro.disconnect();
+    };
+  }, []);
+
+  const itemsLength = items?.length ?? 0;
+
+  const { currentOffset, next, prev } = useMultipleSlider({
     gap,
+    items: itemsLength,
+    itemsInRow: cols,
+    step,
+  });
+
+  const gridStyles = getMultipleSliderGridStyle({
+    gap,
+    currentWidth,
+    itemsInRow: cols,
     currentOffset,
-    isSquare = false,
-    lazy = true,
-    ...restProps
-  } = props;
-
-  const arrayChildren = Children.toArray(children);
-
-  const displayedItems = useMemo(() => {
-    return lazy
-      ? arrayChildren.slice(0, itemsInRow + currentOffset + 1)
-      : arrayChildren;
-  }, [arrayChildren, currentOffset, itemsInRow, lazy]);
-
-  const gapsInRow = itemsInRow - 1;
-  const cellWidthCalc = `calc(${100 / itemsInRow}% - ${
-    (gapsInRow * gap) / itemsInRow
-  }px)`;
-
-  const leftCalc = `calc( ${
-    ((gapsInRow * gap) / itemsInRow) * currentOffset
-  }px - ${(100 / itemsInRow) * currentOffset}% - ${gap * currentOffset}px)`;
+    items: itemsLength,
+  });
 
   return (
     <StyledMultipleSlider {...restProps}>
-      <StyledGrid
-        style={{
-          left: leftCalc,
-          gridTemplateColumns: `repeat(${displayedItems.length}, ${cellWidthCalc}) `,
-          gap: gap,
-        }}
-      >
-        {displayedItems.map((child, index) => {
-          return (
-            <StyledGridItem key={index} $isSquare={isSquare}>
-              {child}
-            </StyledGridItem>
-          );
-        })}
-      </StyledGrid>
+      <StyledSlideButtonContainer>
+        <BaseSlider.Previous onClick={prev} />
+      </StyledSlideButtonContainer>
+      <StyledOverflowContainer $gap={gap}>
+        <StyledSlidesContainer ref={ref}>
+          <StyledGrid style={gridStyles}>{items}</StyledGrid>
+        </StyledSlidesContainer>
+      </StyledOverflowContainer>
+      <StyledSlideButtonContainer>
+        <BaseSlider.Next onClick={next} />
+      </StyledSlideButtonContainer>
     </StyledMultipleSlider>
   );
 };

@@ -1,8 +1,8 @@
-import { StyledTag } from './styles';
+import { StyledTag } from "./styles";
 
-import { FC, memo, PropsWithoutRef } from 'react';
+import { FC, memo, PropsWithoutRef } from "react";
 
-export type TagProps = PropsWithoutRef<JSX.IntrinsicElements['div']> & {};
+export type TagProps = PropsWithoutRef<JSX.IntrinsicElements["div"]> & {};
 
 const _Tag: FC<TagProps> = (props) => {
   const { ...restProps } = props;

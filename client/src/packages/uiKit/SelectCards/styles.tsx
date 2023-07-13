@@ -4,7 +4,7 @@ import { CheckCircleIcon, CircleIcon } from "@packages/icons";
 import { colors, Typography } from "@packages/uiKit";
 import styled, { css } from "styled-components";
 
-export const StyledCardsContainer = styled.div<{ $cols: number }>`
+export const StyledSelectCards = styled.div<{ $cols: number }>`
   display: grid;
   ${({ $cols }) => css`
     grid-template-columns: repeat(${$cols}, 1fr);
@@ -12,8 +12,6 @@ export const StyledCardsContainer = styled.div<{ $cols: number }>`
   justify-content: space-between;
   gap: 15px;
 `;
-
-export const StyledSelectCards = styled.div``;
 
 export const StyledCheckContainer = styled.div<{
   $checkPosition: SelectCardsCheckPosition;

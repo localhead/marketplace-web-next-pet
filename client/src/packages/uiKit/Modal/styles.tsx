@@ -7,7 +7,7 @@ import { Typography } from "@packages/uiKit/Typography";
 import { zIndexes } from "@packages/uiKit/utils/zIndexes";
 
 import styled, { css } from "styled-components";
-import { hideScrollbarStyles } from "../utils";
+import { colors } from "../utils";
 
 export const StyledPopover = styled.div`
   position: fixed;
@@ -45,7 +45,7 @@ export const StyledModal = styled.div<{
     css`
       width: ${$width}px;
     `}
-  border-radius: 20px;
+  border-radius: 60px;
 
   padding: 55px 70px;
 
@@ -73,7 +73,7 @@ export const StyledModal = styled.div<{
         max-width: 100%;
         max-height: 100%;
         border-radius: 0;
-        padding: 20px 30px;
+        padding: 0px;
       }
     `}
 `;
@@ -84,6 +84,10 @@ export const StyledModalCloseButton = styled(IconButton).attrs({
 })`
   border-radius: 50%;
   padding: 8px;
+
+  ${media.down("tablet")} {
+    display: none;
+  }
 `;
 
 export const StyledModalHeader = styled.div`
@@ -91,7 +95,11 @@ export const StyledModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  margin-bottom: 30px;
+
+  ${media.down("tablet")} {
+    padding: 20px 30px 20px;
+    border-bottom: 1px solid ${colors.gray1};
+  }
 `;
 
 export const StyledModalContent = styled.div`
@@ -99,22 +107,29 @@ export const StyledModalContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 1px;
-
-  ${hideScrollbarStyles}
+  ${media.down("tablet")} {
+    padding: 0px 30px;
+  }
 `;
 
 export const StyledNotificationContainer = styled.div``;
 
 export const StyledModalTitle = styled(Typography).attrs({
-  size: 30,
+  size: 36,
+  weight: 700,
+  color: "dark",
 })<{ $isStretched: boolean }>`
   flex: 1;
+
+  ${media.down("tablet")} {
+    font-size: 24px;
+  }
 
   ${({ $isStretched }) =>
     !$isStretched &&
     css`
       ${media.down("tablet")} {
-        font-size: 28px;
+        font-size: 24px;
       }
     `}
 `;

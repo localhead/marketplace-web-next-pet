@@ -1,28 +1,29 @@
-import "antd-grid-layout/styles/antd-grid-layout.css";
-import "antd/lib/style/default.css";
+import localFont from "@next/font/local";
 
-import localFont from "next/font/local";
+import "antd/dist/antd.min.css";
 
 export const onestFont = localFont({
+  preload: true,
+
   src: [
     {
-      path: "../../public/assets/fonts/onest/OnestLight1602-hint.woff",
+      path: "../../public/fonts/onest/OnestLight1602-hint.woff",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../../public/assets/fonts/onest/OnestRegular1602-hint.woff",
+      path: "../../public/fonts/onest/OnestRegular1602-hint.woff",
       weight: "400",
       style: "normal",
     },
 
     {
-      path: "../../public/assets/fonts/onest/OnestMedium1602-hint.woff",
+      path: "../../public/fonts/onest/OnestMedium1602-hint.woff",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../../public/assets/fonts/onest/OnestBold1602-hint.woff",
+      path: "../../public/fonts/onest/OnestBold1602-hint.woff",
       weight: "700",
       style: "normal",
     },
@@ -30,31 +31,46 @@ export const onestFont = localFont({
 });
 
 import { createGlobalStyle } from "styled-components";
-import { colors } from "./colors";
 
 export const GlobalStyle = createGlobalStyle`
 
+ @font-face {
+  font-family: "Onest";
+  src: url('/fonts/onest/OnestLight1602-hint.woff') format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: fallback;
+}
+  
+@font-face {
+  font-family: "Onest";
+  src: url('/fonts/onest/OnestRegular1602-hint.woff') format("woff");
+  font-weight: 400;
+  font-style: regular;
+  font-display: fallback;
+}
+  
+@font-face {
+  font-family: "Onest";
+  src: url('/fonts/onest/OnestMedium1602-hint.woff') format("woff");
+  font-weight: 500;
+  font-style: medium;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Onest";
+  src: url('/fonts/onest/OnestBold1602-hint.woff') format("woff");
+  font-weight: 700;
+  font-style: bold;
+  font-display: fallback;
+} 
+
+
   body {
     line-height: 1.2 !important;
+    font-family: 'Onest' , sans-serif !important;
   }
-
-  body::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  body::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: ${colors.gray1};
-    border-radius: 3px;
-  }
-
-  body::-webkit-scrollbar-thumb:hover {
-    background-color: ${colors.gray1};
-  }
-
 
   //Normalize
   html, body, div, span, applet, object, iframe,
@@ -82,9 +98,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
       height: 100%;
+
   }
   body {
       line-height: 1;
+
   }
   ol, ul {
       list-style: none;

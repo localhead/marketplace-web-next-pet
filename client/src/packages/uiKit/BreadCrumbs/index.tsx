@@ -1,9 +1,8 @@
 import {
   StyledBreadCrumbs,
   StyledCaretLeftIcon,
-  StyledItemInner,
   StyledLink,
-  StyledListItem,
+  StyledLinkItem,
 } from "./styles";
 
 import { BreadcrumbItem } from "./type";
@@ -21,42 +20,24 @@ const _Breadcrumbs: FC<BreadcrumbsProps> = (props) => {
   const { items, ...restProps } = props;
 
   return (
-    <StyledBreadCrumbs
-      {...restProps}
-      itemScope
-      itemType="https://schema.org/BreadcrumbList"
-    >
+    <StyledBreadCrumbs {...restProps}>
       {items.map((item, index) => {
         if (item.link) {
           return (
-            <StyledListItem
-              key={index}
-              itemProp="itemListElement"
-              itemScope
-              itemType="https://schema.org/ListItem"
-            >
-              <StyledLink href={item.link} itemProp="item">
+            <StyledLink key={index} href={item.link}>
+              <StyledLinkItem>
                 {index !== 0 && <StyledCaretLeftIcon />}
-                <span itemProp="name">{item.label}</span>
-              </StyledLink>
-              <meta itemProp="position" content={(index + 1).toString()} />
-            </StyledListItem>
+                {item.label}
+              </StyledLinkItem>
+            </StyledLink>
           );
         }
 
         return (
-          <StyledListItem
-            key={index}
-            itemProp="itemListElement"
-            itemScope
-            itemType="https://schema.org/ListItem"
-          >
-            <StyledItemInner itemProp="item">
-              {index !== 0 && <StyledCaretLeftIcon />}
-              <span itemProp="name">{item.label}</span>
-            </StyledItemInner>
-            <meta itemProp="position" content={(index + 1).toString()} />
-          </StyledListItem>
+          <StyledLinkItem key={index}>
+            {index !== 0 && <StyledCaretLeftIcon />}
+            {item.label}
+          </StyledLinkItem>
         );
       })}
     </StyledBreadCrumbs>

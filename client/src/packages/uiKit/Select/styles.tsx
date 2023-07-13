@@ -4,14 +4,18 @@ import { colors } from "../utils/colors";
 import { placeholderStyles } from "../utils/placeholderStyles";
 import { zIndexes } from "../utils/zIndexes";
 
+import { media } from "@features/adaptive/breakpoints";
 import { CaretDownIcon, CloseIcon } from "@packages/icons";
 import styled, { FlattenSimpleInterpolation, css } from "styled-components";
+import { Typography } from "../Typography";
 
 export const StyledSelectContainer = styled.div<{
   $variant: SelectVariant;
   $size: SelectSize;
 }>`
   position: relative;
+
+  border-radius: 14px;
 
   ${({ $variant, $size }) => css`
     ${sizeToStyles[$size]}
@@ -59,13 +63,21 @@ export const StyledLabel = styled.div`
   text-overflow: ellipsis;
 `;
 
-export const StyledPlaceholder = styled.div`
+export const StyledPlaceholder = styled(Typography).attrs({
+  size: 18,
+  weight: 400,
+  color: "dark",
+})`
   ${placeholderStyles}
   flex: 1;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ${media.down("desktop")} {
+    font-size: 14px;
+  }
 `;
 
 export const StyledDropdown = styled.div<{
@@ -164,7 +176,8 @@ const variantToStyles: Record<SelectVariant, FlattenSimpleInterpolation> = {
     ${StyledButton} {
       background-color: transparent;
       color: ${colors.dark};
-      border: 1px solid ${colors.gray5};
+      padding: 0px;
+      border: none;
     }
 
     ${StyledDropdown} {
@@ -185,13 +198,13 @@ const variantToStyles: Record<SelectVariant, FlattenSimpleInterpolation> = {
 const sizeToStyles: Record<SelectSize, FlattenSimpleInterpolation> = {
   medium: css`
     ${StyledButton} {
-      border-radius: 14px;
-      font-size: 12px;
-      padding: 11px 22px 11px 18px;
+      font-size: 18px;
+      border: none;
     }
 
     ${StyledCaretDownIcon} {
-      font-size: 16px;
+      font-size: 20px;
+      color: ${colors.primary};
     }
 
     ${StyledDropdown} {
@@ -206,26 +219,11 @@ const sizeToStyles: Record<SelectSize, FlattenSimpleInterpolation> = {
     ${StyledButton} {
       border-radius: 14px;
       font-size: 12px;
-      padding: 0px 11px;
+      border: none;
     }
 
     ${StyledCaretDownIcon} {
       font-size: 16px;
-    }
-
-    ${StyledDropdown} {
-      background-color: white;
-      padding: 0px 20px 3px 11px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-  `,
-  noCaret: css`
-    ${StyledButton} {
-      border-radius: 14px;
-      font-size: 12px;
-      padding: 5px 11px;
     }
 
     ${StyledDropdown} {

@@ -1,2 +1,2 @@
-export type FieldSize = 'large';
-export type FieldVariant = 'outlined';
+export type FieldSize = "large" | "medium";
+export type FieldVariant = "outlined" | "rounded";

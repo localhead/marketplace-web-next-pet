@@ -1,49 +1,65 @@
-import { StyledIconButton } from './styles';
+import { StyledEyeIcon, StyledEyeSlashIcon, StyledIconButton } from "./styles";
 
-import { InputField, InputFieldProps } from '../InputField';
+import { InputField, InputFieldProps } from "../InputField";
 
-import { EyeIcon, EyeSlashIcon } from '@packages/icons';
-import { FC, memo, useMemo, useState } from 'react';
+import { UnlockIcon } from "@packages/icons";
+import { FC, memo, useMemo, useState } from "react";
 
-export interface PasswordFieldProps extends Omit<InputFieldProps, 'right'> {}
+export interface PasswordFieldProps extends Omit<InputFieldProps, "right"> {
+  passwordFieldVariant?: "login" | "restore";
+}
 
 const _PasswordField: FC<PasswordFieldProps> = (props) => {
-  const { inputProps, ...restProps } = props;
+  const { inputProps, passwordFieldVariant = "restore", ...restProps } = props;
 
   const [isShowPass, setIsShowPass] = useState(false);
 
-  const inputPropsWithPasswordType: InputFieldProps['inputProps'] =
+  const inputPropsWithPasswordType: InputFieldProps["inputProps"] =
     useMemo(() => {
       if (isShowPass) {
         return {
-          type: 'text',
+          type: "text",
           ...inputProps,
         };
       }
 
       return {
-        type: 'password',
+        type: "password",
         ...inputProps,
       };
     }, [inputProps, isShowPass]);
 
   const rightContent = useMemo(() => {
-    const handleSwitch = () => setIsShowPass((prev) => !prev);
+    const handleSwitch = () => {
+      setIsShowPass((prev) => !prev);
+    };
 
     if (isShowPass) {
       return (
-        <StyledIconButton onClick={handleSwitch}>
-          <EyeIcon />
-        </StyledIconButton>
+        <>
+          {passwordFieldVariant === "login" ? (
+            <UnlockIcon />
+          ) : (
+            <StyledIconButton onClick={handleSwitch}>
+              <StyledEyeIcon />
+            </StyledIconButton>
+          )}
+        </>
       );
     }
 
     return (
-      <StyledIconButton onClick={handleSwitch}>
-        <EyeSlashIcon />
-      </StyledIconButton>
+      <>
+        {passwordFieldVariant === "login" ? (
+          <UnlockIcon />
+        ) : (
+          <StyledIconButton onClick={handleSwitch}>
+            <StyledEyeSlashIcon />
+          </StyledIconButton>
+        )}
+      </>
     );
-  }, [isShowPass]);
+  }, [isShowPass, passwordFieldVariant]);
 
   return (
     <InputField

@@ -1,15 +1,29 @@
-import { StyledIconButton } from './styles';
-import { IconButtonVariant } from './types';
+import { StyledIconButton } from "./styles";
+import { IconButtonSize, IconButtonVariant } from "./types";
 
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 export interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: IconButtonVariant;
+  size?: IconButtonSize;
+  rounded?: boolean;
 }
 
 export const IconButton: FC<IconButtonProps> = (props) => {
-  const { variant = 'text', ...restProps } = props;
+  const {
+    size = "large",
+    variant = "text",
+    rounded = true,
+    ...restProps
+  } = props;
 
-  return <StyledIconButton $variant={variant} {...restProps} />;
+  return (
+    <StyledIconButton
+      $variant={variant}
+      $size={size}
+      $rounded={rounded}
+      {...restProps}
+    />
+  );
 };

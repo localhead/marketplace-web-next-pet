@@ -1,28 +1,49 @@
-import { Typography } from '../Typography';
+import { colors } from "../utils";
 
-import { colors } from '../utils';
+import styled, { css } from "styled-components";
+import { Typography } from "../Typography";
 
-import styled, { css } from 'styled-components';
+export const StyledMiddleContainer = styled.div<{ $size: "large" | "medium" }>`
+  flex: 1;
+  min-width: 0;
 
-export const StyledField = styled.div<{ $hasError: boolean }>`
+  display: flex;
+  flex-direction: column;
+
+  ${({ $size }) =>
+    $size === "large"
+      ? css`
+          padding: 7px 14px;
+        `
+      : $size === "medium"
+      ? css`
+          padding: 0px;
+        `
+      : css``}
+`;
+
+export const StyledField = styled.div<{
+  $hasError: boolean;
+  $variant: "outlined" | "rounded" | undefined;
+}>`
   display: flex;
   border-radius: 10px;
-  border: 1px solid ${colors.gray12};
-  min-height: 56px;
+  align-items: center;
+  border: 1px solid ${colors.gray15};
+  height: 100%;
+  background-color: ${colors.white};
 
   ${({ $hasError }) =>
     $hasError &&
     css`
       border-color: ${colors.red3};
     `}
-`;
-
-export const StyledMiddleContainer = styled.div`
-  flex: 1;
-  min-width: 0;
-  padding: 7px 14px;
-  display: flex;
-  flex-direction: column;
+  ${({ $variant }) =>
+    $variant === "rounded" &&
+    css`
+      border-radius: 30px;
+      padding: 7px 8px;
+    `}
 `;
 
 export const StyledLeftContainer = styled.div`
@@ -36,34 +57,31 @@ export const StyledRightContainer = styled.div`
   align-items: center;
 `;
 
-export const StyledLabel = styled(Typography).attrs({
+export const StyledFieldLabel = styled(Typography).attrs({
   size: 12,
-  color: 'dark',
+  color: "dark",
+  weight: 500,
   nowrap: true,
   ellipsis: true,
 })<{ $isFilled?: boolean }>`
   margin-top: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 7px;
 
   ${({ $isFilled }) =>
     $isFilled &&
     css`
-      color: ${colors.gray3};
+      color: ${colors.gray24};
     `}
 `;
 
-export const StyledError = styled(Typography).attrs({
+export const StyledFieldError = styled(Typography).attrs({
   size: 12,
-  color: 'red1',
+  color: "red1",
   nowrap: true,
   ellipsis: true,
 })<{ $isFilled?: boolean }>`
   margin-top: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 7px;
 `;
 
-export const StyledControlContainter = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 1;
-`;
+export const StyledControlContainer = styled.div``;

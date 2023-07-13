@@ -1,0 +1,94 @@
+stages:
+  - install_dependencies
+  - build
+  - deployment
+
+variables:
+  name: halalbank
+  dockerImageName: $name__img
+  dockerContainerName: $name__container
+  prod_name: $name--prod
+  test_name: $name--test
+  pm2_path: /root/.nvm/versions/node/v16.8.0/bin/pm2
+  sharp_path: $HOME/node_modules/sharp
+  deploy_directory_path_root: /var/repos
+  prod_deploy_directory_path: $deploy_directory_path_root/$prod_name
+  test_deploy_directory_path: $deploy_directory_path_root/$test_name
+  prod_inner_port: 3100
+  test_inner_port: 3101
+
+install_npm_deps:
+  stage: install_dependencies
+  image: debian-with-deps
+  tags:
+    - dockerBank
+  script:
+    - npm install
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+
+  artifacts:
+    paths:
+      - node_modules
+    untracked: false
+    when: on_success
+    expire_in: 1 hours
+
+build_debian:
+  image: debian-with-deps
+  tags:
+    - dockerBank
+  stage: build
+  script:
+    - npm run build
+  cache:
+    paths:
+      - .next
+  artifacts:
+    paths:
+      - .next
+    untracked: false
+    when: on_success
+    expire_in: 1 days
+
+# deployment_test:
+#   only:
+#     - test
+#   tags:
+#     - bash
+#   stage: deployment
+#   script:
+#     - sudo $pm2_path delete --silent $test_name || true
+#     - sudo rm -r $test_deploy_directory_path || true
+#     - sudo cp -R ./ $test_deploy_directory_path
+#     - sudo rm /etc/nginx/conf.d/$test_name.conf || true
+#     - sudo cp nginx-test.conf /etc/nginx/conf.d/$test_name.conf
+#     - sudo /etc/init.d/nginx restart
+#     - cd $test_deploy_directory_path
+#     - NEXT_SHARP_PATH=$sharp_path sudo $pm2_path start npm --name $test_name -- run start -- -p $test_inner_port
+
+deployment_run_server:
+  stage: deployment
+  script:
+    - docker buildx build -t halalbank__img .
+    - docker rm -f halalbank__container
+    - docker run -it -d -p $prod_inner_port:3000 --rm --name halalbank__container halalbank__img
+  tags:
+    - bashBank
+  only:
+    - main
+
+deployment_refresh_nginx:
+  stage: deployment
+  script:
+    - sudo rm /etc/nginx/conf.d/$prod_name.conf || true
+    - sudo cp nginx-prod.conf /etc/nginx/conf.d/$prod_name.conf
+    - sudo /etc/init.d/nginx restart
+  tags:
+    - bashBank
+  only:
+    - main

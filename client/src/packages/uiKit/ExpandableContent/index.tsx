@@ -63,7 +63,7 @@ const _ExpandableContent: FC<ExpandableContentProps> = (props) => {
       </StyledContent>
       {isExpandHeight && (
         <StyledExpandButton onClick={toggle}>
-          {isExpanded ? "Скрыть" : "Читать далее"}
+          {isExpanded ? "Скрыть" : "Показать полностью"}
         </StyledExpandButton>
       )}
     </StyledExpandableContent>

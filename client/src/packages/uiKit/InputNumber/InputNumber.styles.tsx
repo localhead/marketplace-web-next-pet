@@ -1,8 +1,8 @@
-import { Input } from '../Input';
+import { Input } from "../Input";
 
-import { StyledInput } from '../Input/styles';
+import { StyledInput } from "../Input/styles";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledInputNumber = styled(Input)`
   /*Hide arrows */

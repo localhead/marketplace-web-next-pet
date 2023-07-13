@@ -1,6 +1,6 @@
+import { BaseSlider } from "@features/main/components/BaseSlider";
 import {
   StyledChildrenContainer,
-  StyledDot,
   StyledDots,
   StyledMovable,
   StyledSlideContainer,
@@ -21,10 +21,6 @@ export const SliderDots: FC<SliderProps> = (props) => {
   const { slides, ...restProps } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToSlideHandler = (dotIndex: number) => {
-    setCurrentIndex(dotIndex);
-  };
 
   const movableRightOffset = currentIndex
     ? `calc(${currentIndex}00% + ${currentIndex * 15}px) `
@@ -55,22 +51,14 @@ export const SliderDots: FC<SliderProps> = (props) => {
           })}
         </StyledMovable>
         {/* {slides[currentIndex]} */}
-      </StyledChildrenContainer>
-      {slides.length > 1 && (
         <StyledDots>
-          {slides.map((_, index) => {
-            const isActive = index === currentIndex;
-
-            return (
-              <StyledDot
-                key={index}
-                onClick={() => goToSlideHandler(index)}
-                $isActive={isActive}
-              />
-            );
-          })}
+          <BaseSlider.Dots
+            currentIndex={currentIndex}
+            slides={slides.length}
+            onChangeSlide={setCurrentIndex}
+          />
         </StyledDots>
-      )}
+      </StyledChildrenContainer>
     </StyledSliderDots>
   );
 };

@@ -1,12 +1,13 @@
 import { StyledInput } from "./styles";
 
 import { Field, FieldProps } from "@packages/uiKit/Field";
-import { forwardRef, InputHTMLAttributes, memo } from "react";
+import { InputHTMLAttributes, forwardRef, memo } from "react";
 
 export interface InputNumberFieldProps extends Omit<FieldProps, "children"> {
   value?: number | null;
   onChange?: (value: number | null) => void;
   placeholder?: string;
+  maxLength?: number;
   inputProps?: Omit<
     InputHTMLAttributes<HTMLInputElement>,
     "value" | "onChange" | "size"
@@ -15,7 +16,14 @@ export interface InputNumberFieldProps extends Omit<FieldProps, "children"> {
 
 const _InputNumberField = forwardRef<HTMLDivElement, InputNumberFieldProps>(
   (props, ref) => {
-    const { value, onChange, placeholder, inputProps, ...restProps } = props;
+    const {
+      value,
+      maxLength,
+      onChange,
+      placeholder,
+      inputProps,
+      ...restProps
+    } = props;
 
     return (
       <Field {...restProps} isFilled={Boolean(value)} ref={ref}>
@@ -23,6 +31,7 @@ const _InputNumberField = forwardRef<HTMLDivElement, InputNumberFieldProps>(
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          maxLength={maxLength}
           {...inputProps}
         />
       </Field>

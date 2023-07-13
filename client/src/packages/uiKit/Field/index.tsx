@@ -1,20 +1,20 @@
 import {
-  StyledControlContainter,
-  StyledError,
+  StyledControlContainer,
   StyledField,
-  StyledLabel,
+  StyledFieldError,
+  StyledFieldLabel,
   StyledLeftContainer,
   StyledMiddleContainer,
   StyledRightContainer,
 } from "./styles";
-import { FieldSize, FieldVariant } from "./types";
+import { FieldVariant } from "./types";
 
 import React, { forwardRef, PropsWithChildren, ReactNode } from "react";
 
 export interface FieldProps extends PropsWithChildren {
   className?: string;
   style?: React.CSSProperties;
-  size?: FieldSize;
+  size?: "large" | "medium";
   variant?: FieldVariant;
   label?: string;
   left?: ReactNode;
@@ -26,7 +26,7 @@ export interface FieldProps extends PropsWithChildren {
 
 export const Field = forwardRef<HTMLDivElement, FieldProps>((props, ref) => {
   const {
-    size,
+    size = "large",
     variant,
     label,
     left,
@@ -38,20 +38,25 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>((props, ref) => {
   } = props;
 
   return (
-    <StyledField ref={ref} $hasError={Boolean(error)} {...restProps}>
+    <StyledField
+      ref={ref}
+      $hasError={Boolean(error)}
+      $variant={variant}
+      {...restProps}
+    >
       {left ? <StyledLeftContainer>{left}</StyledLeftContainer> : null}
 
-      <StyledMiddleContainer>
+      <StyledMiddleContainer $size={size}>
         {label || error ? (
           error ? (
-            <StyledError>{error}</StyledError>
+            <StyledFieldError>{error}</StyledFieldError>
           ) : (
-            <StyledLabel $isFilled={isFilled}>{label}</StyledLabel>
+            <StyledFieldLabel $isFilled={isFilled}>{label}</StyledFieldLabel>
           )
         ) : null}
 
         {children ? (
-          <StyledControlContainter>{children}</StyledControlContainter>
+          <StyledControlContainer>{children}</StyledControlContainer>
         ) : null}
       </StyledMiddleContainer>
 

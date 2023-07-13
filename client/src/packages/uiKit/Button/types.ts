@@ -6,11 +6,13 @@ export type ButtonVariant =
   | "outlined"
   | "secondary-outlined"
   | "text"
+  | "primary-text"
   | "select-type";
 
 export type ButtonSize =
   | "extra-small"
   | "small"
+  | "preMedium"
   | "medium"
   | "large"
   | "extralarge";

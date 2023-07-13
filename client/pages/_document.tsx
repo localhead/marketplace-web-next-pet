@@ -1,17 +1,3 @@
-// import { Head, Html, Main, NextScript } from "next/document";
-
-// export default function Document() {
-//   return (
-//     <Html lang="en">
-//       <Head />
-//       <body>
-//         <Main />
-//         <NextScript />
-//       </body>
-//     </Html>
-//   );
-// }
-
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -54,36 +40,7 @@ export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="en">
-        <Head>
-          {/* <link
-            rel="preload"
-            href="/fonts/onest/OnestLight1602-hint.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/onest/OnestRegular1602-hint.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/onest/OnestMedium1602-hint.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/onest/OnestBold1602-hint.woff"
-            as="font"
-            type="font/woff"
-            crossOrigin=""
-          /> */}
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

@@ -4,7 +4,7 @@ import { colors } from "../utils/colors";
 
 import styled, { css } from "styled-components";
 
-const sizeStyleDisableVariants: ButtonVariant[] = ["text"];
+const paddingDisabledVariants: ButtonVariant[] = ["text", "primary-text"];
 
 const colorConfig: Record<
   ButtonVariant,
@@ -18,22 +18,22 @@ const colorConfig: Record<
   }
 > = {
   primary: {
-    textColor: colors.dark,
+    textColor: colors.white,
     bgColor: colors.primary,
     borderColor: colors.primary,
 
-    hoverTextColor: colors.dark,
+    hoverTextColor: colors.white,
     hoverBgColor: colors.primaryLight,
     hoverBorderColor: colors.primaryLight,
   },
   secondary: {
-    textColor: colors.gray2,
-    bgColor: colors.gray9,
-    borderColor: colors.gray9,
+    textColor: colors.dark,
+    bgColor: colors.backgroundColorHeader,
+    borderColor: colors.backgroundColorHeader,
 
     hoverTextColor: colors.dark,
-    hoverBgColor: colors.gray8,
-    hoverBorderColor: colors.gray8,
+    hoverBgColor: colors.gray1,
+    hoverBorderColor: colors.gray1,
   },
   white: {
     textColor: colors.gray11,
@@ -57,7 +57,7 @@ const colorConfig: Record<
   outlined: {
     textColor: colors.dark,
     bgColor: "transparent",
-    borderColor: colors.gray5,
+    borderColor: colors.primary,
 
     hoverTextColor: colors.dark,
     hoverBgColor: "transparent",
@@ -67,18 +67,27 @@ const colorConfig: Record<
   "secondary-outlined": {
     textColor: colors.dark,
     bgColor: "transparent",
-    borderColor: colors.gray5,
+    borderColor: colors.gray1,
 
     hoverTextColor: colors.dark,
     hoverBgColor: "transparent",
     hoverBorderColor: colors.dark,
   },
   text: {
-    textColor: colors.gray11,
+    textColor: colors.dark,
     bgColor: "transparent",
     borderColor: "transparent",
 
-    hoverTextColor: colors.gray2,
+    hoverTextColor: colors.dark,
+    hoverBgColor: "transparent",
+    hoverBorderColor: "transparent",
+  },
+  "primary-text": {
+    textColor: colors.primary,
+    bgColor: "transparent",
+    borderColor: "transparent",
+
+    hoverTextColor: colors.primary,
     hoverBgColor: "transparent",
     hoverBorderColor: "transparent",
   },
@@ -115,45 +124,54 @@ const sizeConfig: Record<
     paddingVerticalPx: 5,
     paddingHorizontalPx: 9,
     paddingHorizontalIcon: 9,
-    fontSize: 11,
-    borderRadius: 11,
+    fontSize: 12,
+    borderRadius: 24,
     gap: 8,
-    iconSize: 12,
+    iconSize: 14,
   },
   small: {
-    paddingVerticalPx: 8.5,
-    paddingHorizontalPx: 17,
-    paddingHorizontalIcon: 10,
+    paddingVerticalPx: 6,
+    paddingHorizontalPx: 15,
+    paddingHorizontalIcon: 13,
     fontSize: 12,
-    borderRadius: 12,
+    borderRadius: 24,
     gap: 15,
     iconSize: 16,
   },
 
   medium: {
-    paddingVerticalPx: 11,
-    paddingHorizontalPx: 12,
-    paddingHorizontalIcon: 10,
-    fontSize: 12,
-    borderRadius: 14,
+    paddingVerticalPx: 12,
+    paddingHorizontalPx: 20,
+    paddingHorizontalIcon: 14,
+    fontSize: 16,
+    borderRadius: 34,
+    gap: 15,
+    iconSize: 16,
+  },
+  preMedium: {
+    paddingVerticalPx: 10,
+    paddingHorizontalPx: 15,
+    paddingHorizontalIcon: 14,
+    fontSize: 14,
+    borderRadius: 34,
     gap: 15,
     iconSize: 16,
   },
   large: {
-    paddingVerticalPx: 15,
-    paddingHorizontalPx: 22,
+    paddingVerticalPx: 14,
+    paddingHorizontalPx: 29,
     paddingHorizontalIcon: 13,
-    fontSize: 14,
-    borderRadius: 18,
+    fontSize: 16,
+    borderRadius: 24,
     gap: 19,
     iconSize: 20,
   },
   extralarge: {
-    paddingVerticalPx: 17.5,
-    paddingHorizontalPx: 35,
+    paddingVerticalPx: 19.5,
+    paddingHorizontalPx: 37,
     paddingHorizontalIcon: 13,
-    borderRadius: 18,
-    fontSize: 16,
+    borderRadius: 34,
+    fontSize: 18,
     gap: 19,
     iconSize: 20,
   },
@@ -172,6 +190,11 @@ export type StyledButtonProps = {
   $iconPosition: ButtonIconPosition;
 };
 
+export const StyledContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 18px;
   border-style: solid;
@@ -179,6 +202,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   line-height: 120%;
 
   display: block;
+
   min-width: fit-content;
 
   transition: 0.1s ease;
@@ -233,30 +257,26 @@ export const StyledButton = styled.button<StyledButtonProps>`
       gap,
     } = sizeConfig[$size];
 
-    const sizeStyleDisabled = sizeStyleDisableVariants.includes($variant);
+    const isPaddingDisabled = paddingDisabledVariants.includes($variant);
 
-    const paddingLeft = !sizeStyleDisabled
+    const paddingLeft = !isPaddingDisabled
       ? $hasIcon && $iconPosition === "left"
         ? paddingHorizontalIcon
         : paddingHorizontalPx
       : 0;
-    const paddingRight = !sizeStyleDisabled
+    const paddingRight = !isPaddingDisabled
       ? $hasIcon && $iconPosition === "right"
         ? paddingHorizontalIcon
         : paddingHorizontalPx
       : 0;
 
-    const verticalRealPadding = !sizeStyleDisabled ? paddingVerticalPx : 0;
-
-    const realBorderRadius = !sizeStyleDisabled ? borderRadius : 0;
-
-    //TODO Периписать Button, а то уже выглядит как шиза
+    const verticalRealPadding = !isPaddingDisabled ? paddingVerticalPx : 0;
 
     return css`
       font-size: ${fontSize}px;
       padding: ${verticalRealPadding}px ${paddingRight}px
         ${verticalRealPadding}px ${paddingLeft}px;
-      border-radius: ${realBorderRadius}px;
+      border-radius: ${borderRadius}px;
 
       ${$hasIcon &&
       css`

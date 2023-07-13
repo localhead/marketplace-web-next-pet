@@ -17,7 +17,6 @@ export const StyledDrawer = styled.div<{ $width?: number }>`
   background: white;
   z-index: ${zIndexes.modal};
   padding: 43px 64px;
-  padding-bottom: 22px;
   display: flex;
   flex-direction: column;
 

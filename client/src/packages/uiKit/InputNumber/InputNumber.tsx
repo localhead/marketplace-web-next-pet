@@ -7,12 +7,13 @@ import React from "react";
 export interface InputNumberProps
   extends Omit<InputProps, "onChange" | "value"> {
   value?: number | null;
+  maxLength?: number;
   onChange?: (value: number | null) => void;
 }
 
 export const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
   (props, ref) => {
-    const { onChange, value, ...restProps } = props;
+    const { onChange, maxLength, value, ...restProps } = props;
 
     const isValidNumber =
       value !== undefined && value !== null && !Number.isNaN(value);
@@ -27,7 +28,13 @@ export const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
             return;
           }
 
-          onChange(valueAsNumber);
+          const strLength = valueAsNumber.toString().length;
+
+          if (maxLength) {
+            strLength <= maxLength && onChange(valueAsNumber);
+          } else {
+            onChange(valueAsNumber);
+          }
         }
       : undefined;
 

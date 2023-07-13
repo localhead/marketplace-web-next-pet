@@ -1,14 +1,26 @@
+import { authSlice } from "@features/user";
+
+import { modalsSlice } from "@features/modals/store/slice";
+
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 
-const combinedReducer = combineReducers({});
+const combinedReducer = combineReducers({
+  [modalsSlice.name]: modalsSlice.reducer,
+  [authSlice.name]: authSlice.reducer,
+});
 
 const makeStore = () => {
   const store = configureStore({
     reducer: combinedReducer,
 
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat();
+      return getDefaultMiddleware()
+        .concat
+
+        // citiesApi.middleware,
+        // faqApi.middleware,
+        ();
     },
   });
 

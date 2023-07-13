@@ -1,8 +1,8 @@
-import { InputSize, InputVariant } from './types';
+import { InputSize, InputVariant } from "./types";
 
-import { colors } from '../utils';
+import { colors } from "../utils";
 
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 export const StyledInput = styled.input`
   flex: 1;
@@ -22,7 +22,7 @@ export const StyledInput = styled.input`
 
 const variantStylesMap: Record<InputVariant, FlattenSimpleInterpolation> = {
   outlined: css`
-    border: 1px solid ${colors.gray5};
+    border: 1px solid ${colors.gray1};
     background-color: ${colors.white};
 
     ${StyledInput} {
@@ -49,18 +49,18 @@ const variantStylesMap: Record<InputVariant, FlattenSimpleInterpolation> = {
 
 const sizeStylesMap: Record<InputSize, FlattenSimpleInterpolation> = {
   small: css`
-    padding: 3px;
-    border-radius: 12px;
+    padding: 5px 5px 5px 15px;
+    border-radius: 30px;
     min-height: 30px;
 
     ${StyledInput} {
       margin: 0 10px;
-      font-size: 12px;
+      font-size: 18px;
     }
   `,
   medium: css`
-    padding: 5px 6px;
-    border-radius: 18px;
+    padding: 12px 12px;
+    border-radius: 30px;
 
     ${StyledInput} {
       margin: 0 16px;
@@ -75,6 +75,7 @@ export const StyledInputContainer = styled.div<{
 }>`
   display: flex;
   min-width: 0;
+  width: 100%;
 
   ${({ $variant }) => variantStylesMap[$variant]}
   ${({ $size }) => sizeStylesMap[$size]}

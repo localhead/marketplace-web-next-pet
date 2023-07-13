@@ -22,7 +22,6 @@ const _CardSkeleton: FC<OrderCardSkeletonProps> = (props) => {
         width="100%"
         preserveAspectRatio="none"
         animate={isLoading}
-        title={isLoading ? "Загрузка..." : ""}
       >
         <rect width="219" height="66" rx="5" />
       </ContentLoader>

@@ -1,6 +1,7 @@
 import { Button } from "../Button";
 
 import styled, { css } from "styled-components";
+import { colors } from "../utils";
 
 export const StyledExpandableContent = styled.div``;
 
@@ -17,17 +18,16 @@ export const StyledContent = styled.div<{
       : $isExpandHeight &&
         css`
           max-height: ${$maxHeight}px;
-          -webkit-mask-image: -webkit-linear-gradient(
-            top,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0) 95%
-          );
         `}
 `;
 
 export const StyledExpandButton = styled(Button).attrs({
   variant: "text",
-  size: "large",
+  size: "medium",
 })`
   margin-top: 10px;
+  color: ${colors.primary};
+  font-weight: 500;
+
+  border-radius: 0%;
 `;

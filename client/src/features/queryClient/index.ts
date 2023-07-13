@@ -1,2 +1,3 @@
-export * from "./baseQuery";
-export * from "./queryWithNoRefresh";
+export * from './baseQuery';
+export * from './query';
+export * from './queryWithNoRefresh';

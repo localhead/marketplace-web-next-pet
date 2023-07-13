@@ -1,11 +1,11 @@
 import {
-  StyledCircle,
   StyledItem as StyledCheckbox,
+  StyledCircle,
   StyledLabel,
 } from "./styles";
 
 import { CheckIcon } from "@packages/icons";
-import { FC, memo, ReactNode } from "react";
+import { forwardRef, memo, ReactNode } from "react";
 
 export interface CheckboxProps {
   label: ReactNode;
@@ -14,7 +14,7 @@ export interface CheckboxProps {
   error?: boolean;
 }
 
-const _Checkbox: FC<CheckboxProps> = (props) => {
+const _Checkbox = forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const { value, label, onChange, error, ...restProps } = props;
 
   const clickHandler = () => {
@@ -22,13 +22,20 @@ const _Checkbox: FC<CheckboxProps> = (props) => {
   };
 
   return (
-    <StyledCheckbox {...restProps} onClick={clickHandler} $isActive={value}>
+    <StyledCheckbox
+      {...restProps}
+      onClick={clickHandler}
+      $isActive={value}
+      ref={ref}
+    >
       <StyledCircle $isActive={value} $isError={error}>
         {value && <CheckIcon size={14} />}
       </StyledCircle>
       <StyledLabel>{label}</StyledLabel>
     </StyledCheckbox>
   );
-};
+});
+
+_Checkbox.displayName = "Checkbox";
 
 export const Checkbox = memo(_Checkbox);

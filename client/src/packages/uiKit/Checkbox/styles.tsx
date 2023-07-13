@@ -7,7 +7,6 @@ export const StyledItem = styled.div<{ $isActive: boolean }>`
   align-items: center;
   gap: 9px;
   cursor: pointer;
-
   width: fit-content;
 `;
 
@@ -20,15 +19,15 @@ export const StyledCircle = styled.div<{
   min-width: 16px;
   border-radius: 50%;
   display: flex;
-  padding: 1px;
+  padding: 0.5px;
 
   border: 1px solid transparent;
 
   ${({ $isActive }) =>
     $isActive
       ? css`
-          background-color: ${colors.primary};
-          color: ${colors.dark};
+          background-color: ${colors.dark};
+          color: ${colors.white};
         `
       : css`
           border: 1px solid ${colors.gray3};

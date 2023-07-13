@@ -1,14 +1,14 @@
-import { usePagination } from './hooks';
+import { usePagination } from "./hooks";
 import {
   StyledDotsContainer,
   StyledPageButton,
   StyledPagesContainer,
   StyledPagination,
-} from './styles';
+} from "./styles";
 
-import { Button } from '../Button';
-
-import { FC, memo } from 'react';
+import { ArrowRightIcon } from "@packages/icons";
+import { FC, memo } from "react";
+import { Button } from "../Button";
 
 export interface PaginationProps {
   pageIndex: number;
@@ -34,13 +34,9 @@ const _Pagination: FC<PaginationProps> = (props) => {
 
   return (
     <StyledPagination {...restProps}>
-      <Button onClick={onNextPage} variant="primary" size="large">
-        Далее
-      </Button>
-
       <StyledPagesContainer>
         {pages.map((page, index) => {
-          if (page === 'dots') {
+          if (page === "dots") {
             return <Dots key={`dots_${index}`} />;
           }
 
@@ -55,12 +51,19 @@ const _Pagination: FC<PaginationProps> = (props) => {
             <StyledPageButton
               key={page}
               onClick={onClickHandler}
-              $isCurrent={isCurrent}>
+              $isCurrent={isCurrent}
+            >
               {page}
             </StyledPageButton>
           );
         })}
       </StyledPagesContainer>
+      <Button
+        onClick={onNextPage}
+        variant="text"
+        size="medium"
+        icon={<ArrowRightIcon />}
+      ></Button>
     </StyledPagination>
   );
 };

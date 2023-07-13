@@ -1,7 +1,7 @@
-import { Typography } from '../Typography';
-import { colors } from '../utils';
+import { Typography } from "../Typography";
+import { colors } from "../utils";
 
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const StyledDetail = styled.div`
   border-top: 1px solid ${colors.gray13};
@@ -23,12 +23,12 @@ export const StyledTitle = styled(Typography).attrs({
   user-select: none;
   :hover {
     text-decoration: underline;
-    color: ${colors.blueGray2};
+    color: ${colors.primary};
   }
   ${({ $isOpen }) =>
     $isOpen
       ? css`
-          color: ${colors.blueGray2};
+          color: ${colors.primary};
         `
       : css`
           color: ${colors.dark};
