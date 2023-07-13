@@ -1,5 +1,4 @@
 import { ApiRecordId } from "@features/api";
-import { CityRecord } from "@features/cities/store";
 
 export type AuthState =
   | {
@@ -22,7 +21,6 @@ export type UserProfileInfo = {
   surname?: string;
   patronymic?: string;
   tel: string;
-  city: CityRecord | null;
 };
 
 export type LoginRequest = {
@@ -64,16 +62,17 @@ export type LogoutRequest = void;
 export type LogoutResponse = void;
 
 export type RegistrationResponse = {
-  token: string;
+  id: number;
+  password: string;
+  username: string;
+  email: string;
+  updatedAt: Date;
+  createdAt: Date;
 };
 export type RegistrationRequest = {
   email: string;
   password: string;
-  name: string;
-  surname?: string;
-  patronymic?: string;
-  tel: string;
-  city?: ApiRecordId | null;
+  username: string;
 };
 
 export type GetUserRequest = void;
@@ -89,7 +88,7 @@ export type PatchProfileResponse = void;
 
 export type UserAddressRecord = {
   id: ApiRecordId;
-  region: CityRecord; // Город
+
   address: string;
   house: string | null;
   apt: string | null;

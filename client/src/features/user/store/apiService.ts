@@ -37,7 +37,7 @@ export const USER_ADDRESSES_LIST_TAG = {
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: getQueryWithNoRefresh({ subpath: "user" }),
+  baseQuery: getQueryWithNoRefresh({ subpath: "users" }),
   tagTypes: [USER_TAG],
   endpoints: (builder) => {
     return {
@@ -59,7 +59,7 @@ export const userApi = createApi({
       registration: builder.mutation<RegistrationResponse, RegistrationRequest>(
         {
           query: (body) => ({
-            url: "registration/",
+            url: "signup",
             method: "POST",
             body,
           }),

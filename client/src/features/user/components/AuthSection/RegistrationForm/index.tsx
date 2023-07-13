@@ -38,10 +38,10 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
     async (data) => {
       try {
         console.log(data);
-        const { ...restData } = data;
-        //await registrationM({ ...restData, city: city?.id }).unwrap();
+        const { name: username, ...restData } = data;
+        await registrationM({ username, ...restData }).unwrap();
       } catch (e) {
-        //console.log(e);
+        console.log(e);
         if ((e as FetchBaseQueryError).status === 400) {
           throw new Error("Некорректно введены данные");
         }
@@ -50,7 +50,7 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
 
       onSubmit?.();
     },
-    [onSubmit]
+    [onSubmit, registrationM]
   );
 
   const {
