@@ -52,8 +52,13 @@ export default function App({ Component, ...rest }: AppProps) {
             />
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta name="theme-color" content="#ffffff"></meta>
-
-            <title>Market</title>
+            <link
+              rel="icon"
+              type="image/svg"
+              sizes="32x32"
+              href="/vector/logo.svg"
+            />
+            <title>Portal Store</title>
           </Head>
 
           <main className={onestFont.className}>

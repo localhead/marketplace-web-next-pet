@@ -1,11 +1,5 @@
-import { CityRecord } from '@features/cities/store';
-
 export type RegistrationFormValues = {
   name: string;
-  surname: string;
-  patronymic: string;
-  city: CityRecord | null;
-  tel: string;
   email: string;
   password: string;
   repeatPassword: string;

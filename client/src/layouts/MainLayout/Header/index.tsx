@@ -1,6 +1,5 @@
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import React, { FC, memo } from "react";
-import { Container } from "../pageContentComponents/Container";
 import { DesktopHeader } from "./DesktopHeader";
 import { MobileHeader } from "./MobileHeader";
 
@@ -17,18 +16,10 @@ const _Header: FC<HeaderProps> = (props) => {
   const isDesktop = width === "desktop";
 
   if (isDesktop) {
-    return (
-      <Container>
-        <DesktopHeader {...restProps} />
-      </Container>
-    );
+    return <DesktopHeader {...restProps} />;
   }
 
-  return (
-    <Container>
-      <MobileHeader {...restProps} />
-    </Container>
-  );
+  return <MobileHeader {...restProps} />;
 };
 
 export const Header = memo(_Header);

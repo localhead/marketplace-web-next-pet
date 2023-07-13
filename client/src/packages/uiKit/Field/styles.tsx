@@ -29,14 +29,14 @@ export const StyledField = styled.div<{
   display: flex;
   border-radius: 10px;
   align-items: center;
-  border: 1px solid ${colors.gray15};
+  border: 1px solid ${colors.gray1};
   height: 100%;
   background-color: ${colors.white};
 
   ${({ $hasError }) =>
     $hasError &&
     css`
-      border-color: ${colors.red3};
+      border-color: ${colors.red1};
     `}
   ${({ $variant }) =>
     $variant === "rounded" &&
@@ -70,7 +70,7 @@ export const StyledFieldLabel = styled(Typography).attrs({
   ${({ $isFilled }) =>
     $isFilled &&
     css`
-      color: ${colors.gray24};
+      color: ${colors.gray2};
     `}
 `;
 

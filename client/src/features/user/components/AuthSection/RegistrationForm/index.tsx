@@ -6,12 +6,11 @@ import {
 } from "./styles";
 
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
-import { CitySelectFieldAdapter } from "@features/cities/components/CitySelectFieldAdapter";
+
 import { CheckboxAdapter } from "@features/forms/components/CheckboxAdapter";
 import { Form } from "@features/forms/components/Form";
 import { InputFieldAdapter } from "@features/forms/components/InputFieldAdapter";
 import { PasswordFieldAdapter } from "@features/forms/components/PasswordFieldAdapter";
-import { PhoneFieldAdapter } from "@features/forms/components/PhoneFieldAdapter";
 import { userApi } from "@features/user/store";
 import { Button } from "@packages/uiKit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
@@ -38,8 +37,9 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
   const submitHandler: UseRegistrationFormParams["onSubmit"] = useCallback(
     async (data) => {
       try {
-        const { city, repeatPassword: _, ...restData } = data;
-        await registrationM({ ...restData, city: city?.id }).unwrap();
+        console.log(data);
+        const { ...restData } = data;
+        //await registrationM({ ...restData, city: city?.id }).unwrap();
       } catch (e) {
         //console.log(e);
         if ((e as FetchBaseQueryError).status === 400) {
@@ -50,7 +50,7 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
 
       onSubmit?.();
     },
-    [onSubmit, registrationM]
+    [onSubmit]
   );
 
   const {
@@ -64,49 +64,20 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
 
   return (
     <StyledRegistrationForm {...restProps}>
+      <Form.Title>Войдите или создайте аккаунт</Form.Title>
+
       <Form.Content>
-        <Row gutter={[14, 14]}>
-          <Col span={24} lg={12}>
+        <Row gutter={[15, 15]}>
+          <Col span={24}>
             <InputFieldAdapter
+              isFilled
               control={control}
               name="name"
               label="Ваше имя*"
               placeholder="Александр"
             />
           </Col>
-          <Col span={24} lg={12}>
-            <InputFieldAdapter
-              control={control}
-              name="surname"
-              label="Фамилия"
-              placeholder="Васильев"
-            />
-          </Col>
-          <Col span={24} lg={12}>
-            <InputFieldAdapter
-              control={control}
-              name="patronymic"
-              label="Отчество"
-              placeholder="Камалиевич"
-            />
-          </Col>
-
-          <Col span={24} lg={12}>
-            <CitySelectFieldAdapter
-              control={control}
-              name="city"
-              label="Город"
-              placeholder="Москва"
-            />
-          </Col>
-          <Col span={24} lg={12}>
-            <PhoneFieldAdapter
-              control={control}
-              name="tel"
-              label="Номер телефона*"
-            />
-          </Col>
-          <Col span={24} lg={12}>
+          <Col span={24}>
             <InputFieldAdapter
               control={control}
               name="email"

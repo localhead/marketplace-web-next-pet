@@ -24,7 +24,6 @@ export interface LoginFormProps {
 const loginInputProps = {
   autoComplete: "username",
 };
-const loginRightIcon = <EnvelopeSimpleIcon />;
 
 const passwordInputProps = {
   autoComplete: "current-password",
@@ -67,7 +66,7 @@ const _LoginForm: FC<LoginFormProps> = (props) => {
               name="login"
               label="Электронная почта"
               placeholder="name@mail.com"
-              right={loginRightIcon}
+              right={<EnvelopeSimpleIcon />}
               inputProps={loginInputProps}
             />
           </Col>
