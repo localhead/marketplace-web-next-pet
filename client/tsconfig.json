@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      // "--use-npm": ["./src/*"],
+      // "@assets": ["./src/assets"],
+      "@assets/*": ["./public/assets/*"],
+      // // "@components": ["src/components"],
+      "@components/*": ["./src/components/*"],
+      // // "@features": ["src/features"],
+      "@features/*": ["./src/features/*"],
+      // // "@layouts": ["src/layouts"],
+      "@layouts/*": ["./src/layouts/*"],
+      // // "@packages": ["src/packages"],
+      "@packages/*": ["./src/packages/*"],
+      // // "@pages": ["./src/pages"],
+      "@pages/*": ["./src/pages/*"],
+      // // "@utils": ["src/utils"],
+      "@utils/*": ["./src/utils/*"],
+      // // "@hooks": ["src/hooks"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "file-declorations.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/utils/prevent-roboto.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}
