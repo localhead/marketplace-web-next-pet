@@ -45,9 +45,9 @@ export const StyledModal = styled.div<{
     css`
       width: ${$width}px;
     `}
-  border-radius: 60px;
+  border-radius: 20px;
 
-  padding: 55px 70px;
+  padding: 55px 50px;
 
   ${({ $isStretched }) =>
     !$isStretched &&
@@ -84,7 +84,9 @@ export const StyledModalCloseButton = styled(IconButton).attrs({
 })`
   border-radius: 50%;
   padding: 8px;
-
+  position: absolute;
+  top: 25px;
+  right: 25px;
   ${media.down("tablet")} {
     display: none;
   }
@@ -115,8 +117,8 @@ export const StyledModalContent = styled.div`
 export const StyledNotificationContainer = styled.div``;
 
 export const StyledModalTitle = styled(Typography).attrs({
-  size: 36,
-  weight: 700,
+  size: 30,
+  weight: 500,
   color: "dark",
 })<{ $isStretched: boolean }>`
   flex: 1;

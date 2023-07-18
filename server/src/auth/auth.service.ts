@@ -5,11 +5,11 @@ import { UsersService } from '../users/users.service';
 @Injectable()
 export class AuthService {
   // Step 10
-  // пишем метод валидации пользователя
+  // пишем метод валидации пользователя LOGIN
   constructor(private readonly usersService: UsersService) {}
 
-  async validateUser(username: string, password: string) {
-    const user = await this.usersService.findOne({ where: { username } });
+  async validateUser(email: string, password: string) {
+    const user = await this.usersService.findOne({ where: { email } });
 
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');

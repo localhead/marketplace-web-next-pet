@@ -3,7 +3,7 @@ import {
   StyledHeader,
   StyledRight,
   StyledSection,
-  StyledTitle,
+  StyledTitleH2,
 } from "./styles";
 
 import { Container } from "@layouts/MainLayout/pageContentComponents/Container";
@@ -24,13 +24,14 @@ const _Section = forwardRef<HTMLElement, SectionProps>((props, ref) => {
       {(title || right) && (
         <Container>
           <StyledHeader>
-            {title && <StyledTitle>{title}</StyledTitle>}
+            {title && <StyledTitleH2>{title}</StyledTitleH2>}
             {right && <StyledRight>{right}</StyledRight>}
           </StyledHeader>
         </Container>
       )}
-
-      <StyledContent>{children}</StyledContent>
+      <Container>
+        <StyledContent>{children}</StyledContent>
+      </Container>
     </StyledSection>
   );
 });

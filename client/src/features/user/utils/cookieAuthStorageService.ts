@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import { ACCESS_TOKEN_COOKIE_KEY } from "./constants";
 
 class CookieAuthStorageService {
   get isCanUse() {
@@ -11,7 +10,7 @@ class CookieAuthStorageService {
       throw new Error("cookieAuthStorageService can`t use in SSR");
     }
 
-    Cookies.set(ACCESS_TOKEN_COOKIE_KEY, token);
+    Cookies.set("access-token", token);
   }
 
   getToken() {
@@ -19,7 +18,7 @@ class CookieAuthStorageService {
       throw new Error("cookieAuthStorageService can`t use in SSR");
     }
 
-    return Cookies.get(ACCESS_TOKEN_COOKIE_KEY) ?? null;
+    return Cookies.get("access-token") ?? null;
   }
 
   clearToken() {
@@ -27,7 +26,7 @@ class CookieAuthStorageService {
       throw new Error("cookieAuthStorageService can`t use in SSR");
     }
 
-    Cookies.remove(ACCESS_TOKEN_COOKIE_KEY);
+    Cookies.remove("access-token");
   }
 }
 

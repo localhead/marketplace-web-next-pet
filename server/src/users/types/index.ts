@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 
 // Step 23 - для типы свагера
 export class LoginUserRequest {
-  @ApiProperty({ example: 'Ivan' })
-  username: string;
+  @ApiProperty({ example: 'test@mail.ru' })
+  email: string;
 
   @ApiProperty({ example: '1234' })
   password: string;

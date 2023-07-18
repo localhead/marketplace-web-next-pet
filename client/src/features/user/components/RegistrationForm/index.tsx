@@ -11,7 +11,8 @@ import { CheckboxAdapter } from "@features/forms/components/CheckboxAdapter";
 import { Form } from "@features/forms/components/Form";
 import { InputFieldAdapter } from "@features/forms/components/InputFieldAdapter";
 import { PasswordFieldAdapter } from "@features/forms/components/PasswordFieldAdapter";
-import { userApi } from "@features/user/store";
+import { userApi } from "@features/user/store/apiService";
+
 import { Button } from "@packages/uiKit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 import { Col, Row } from "antd";
@@ -37,13 +38,16 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
   const submitHandler: UseRegistrationFormParams["onSubmit"] = useCallback(
     async (data) => {
       try {
-        console.log(data);
+        //console.log(data);
         const { name: username, ...restData } = data;
         await registrationM({ username, ...restData }).unwrap();
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        const errorData = e as FetchBaseQueryError & {
+          data: { message: string };
+        };
         if ((e as FetchBaseQueryError).status === 400) {
-          throw new Error("Некорректно введены данные");
+          throw new Error(errorData.data.message);
         }
         throw new Error("Неизвестная ошибка");
       }
@@ -64,8 +68,6 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
 
   return (
     <StyledRegistrationForm {...restProps}>
-      <Form.Title>Войдите или создайте аккаунт</Form.Title>
-
       <Form.Content>
         <Row gutter={[15, 15]}>
           <Col span={24}>

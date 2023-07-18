@@ -6,11 +6,11 @@ export const StyledFormAdditionalButton = styled.div``;
 export const StyledResetPasswordTitle = styled(Typography).attrs({
   size: 12,
   weight: 500,
-  color: "gray8",
+  color: "gray5",
 })`
   text-align: left;
 `;
 
 export const StyledIcon = styled.div`
-  color: ${colors.gray8};
+  color: ${colors.gray5};
 `;

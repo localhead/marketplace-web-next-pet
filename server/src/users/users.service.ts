@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from './users.model';
-import { CreateUserDto } from './data-transfer-objects/create-user.dto';
 import * as bcrypt from 'bcrypt';
+import { CreateUserDto } from './data-transfer-objects/create-user.dto';
+import { User } from './users.model';
 
 // Step 7 пишем методы для работы с базой пользователей
 @Injectable()
@@ -29,13 +29,19 @@ export class UsersService {
       where: { username: createUserDto.username },
     });
     const existingByEmail = await this.findOne({
-      where: { username: createUserDto.email },
+      where: { email: createUserDto.email },
     });
 
-    if (existingByUsername) {
-      return { warningMessage: 'Пользователь с таким именем уже существует' };
-    }
+    // if (existingByUsername) {
+    //   throw new BadRequestException(
+    //     'Пользователь с таким логином уже существует',
+    //   );
+    //   return { warningMessage: 'Пользователь с таким именем уже существует' };
+    // }
     if (existingByEmail) {
+      throw new BadRequestException(
+        'Пользователь с такой электронной почтой уже существует',
+      );
       return {
         warningMessage:
           'Пользователь с такой электронной почтой уже существует',

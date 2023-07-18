@@ -8,6 +8,8 @@ export const appBaseQuery = (params?: AppBaseQueryParams) => {
 
   return fetchBaseQuery({
     baseUrl: `${API_URL}/${subpath}`,
+    //  credentials: "include" - позволит сохранить куки в хроме
+    credentials: "include",
     ...restParams,
   });
 };

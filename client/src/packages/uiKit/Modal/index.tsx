@@ -19,7 +19,7 @@ export interface ModalProps extends PropsWithChildren {
   className?: string;
   styles?: React.CSSProperties;
 
-  title: string;
+  title?: string;
 
   isOpen: boolean;
   width?: number;

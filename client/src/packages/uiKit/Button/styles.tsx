@@ -28,15 +28,15 @@ const colorConfig: Record<
   },
   secondary: {
     textColor: colors.dark,
-    bgColor: colors.backgroundColorHeader,
-    borderColor: colors.backgroundColorHeader,
+    bgColor: colors.gray4,
+    borderColor: colors.gray4,
 
     hoverTextColor: colors.dark,
     hoverBgColor: colors.gray1,
     hoverBorderColor: colors.gray1,
   },
   white: {
-    textColor: colors.gray11,
+    textColor: colors.gray4,
     bgColor: colors.white,
     borderColor: colors.white,
 
@@ -93,19 +93,19 @@ const colorConfig: Record<
   },
   "select-type": {
     textColor: colors.dark,
-    bgColor: colors.gray9,
+    bgColor: colors.gray4,
     borderColor: "transparent",
 
     hoverTextColor: colors.dark,
     hoverBgColor: "rgb(1, 1, 1, 0.05)",
-    hoverBorderColor: colors.gray9,
+    hoverBorderColor: colors.gray4,
   },
 };
 
 const disabledConfig = {
   textColor: colors.dark1,
-  bgColor: colors.gray9,
-  borderColor: colors.gray9,
+  bgColor: colors.gray4,
+  borderColor: colors.gray4,
 };
 
 const sizeConfig: Record<
@@ -125,7 +125,7 @@ const sizeConfig: Record<
     paddingHorizontalPx: 9,
     paddingHorizontalIcon: 9,
     fontSize: 12,
-    borderRadius: 24,
+    borderRadius: 10,
     gap: 8,
     iconSize: 14,
   },
@@ -134,7 +134,7 @@ const sizeConfig: Record<
     paddingHorizontalPx: 15,
     paddingHorizontalIcon: 13,
     fontSize: 12,
-    borderRadius: 24,
+    borderRadius: 10,
     gap: 15,
     iconSize: 16,
   },
@@ -144,7 +144,7 @@ const sizeConfig: Record<
     paddingHorizontalPx: 20,
     paddingHorizontalIcon: 14,
     fontSize: 16,
-    borderRadius: 34,
+    borderRadius: 10,
     gap: 15,
     iconSize: 16,
   },
@@ -153,7 +153,7 @@ const sizeConfig: Record<
     paddingHorizontalPx: 15,
     paddingHorizontalIcon: 14,
     fontSize: 14,
-    borderRadius: 34,
+    borderRadius: 10,
     gap: 15,
     iconSize: 16,
   },
@@ -162,7 +162,7 @@ const sizeConfig: Record<
     paddingHorizontalPx: 29,
     paddingHorizontalIcon: 13,
     fontSize: 16,
-    borderRadius: 24,
+    borderRadius: 10,
     gap: 19,
     iconSize: 20,
   },
@@ -170,7 +170,7 @@ const sizeConfig: Record<
     paddingVerticalPx: 19.5,
     paddingHorizontalPx: 37,
     paddingHorizontalIcon: 13,
-    borderRadius: 34,
+    borderRadius: 10,
     fontSize: 18,
     gap: 19,
     iconSize: 20,
@@ -196,7 +196,7 @@ export const StyledContent = styled.div`
 `;
 
 export const StyledButton = styled.button<StyledButtonProps>`
-  border-radius: 18px;
+  border-radius: 5px;
   border-style: solid;
   border-width: 1px;
   line-height: 120%;

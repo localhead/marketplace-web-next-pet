@@ -67,10 +67,30 @@ export const GlobalStyle = createGlobalStyle`
 } 
 
 
+
+
   body {
     line-height: 1.2 !important;
     font-family: 'Onest' , sans-serif !important;
   }
+
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #454545;
+    border-radius: 3px;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: gray;
+  }
+
 
   //Normalize
   html, body, div, span, applet, object, iframe,

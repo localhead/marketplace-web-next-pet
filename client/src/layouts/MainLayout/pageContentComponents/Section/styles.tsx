@@ -15,16 +15,15 @@ export const StyledHeader = styled.div`
   margin-bottom: 20px;
 `;
 
-export const StyledTitle = styled(Typography).attrs({
-  forwardedAs: "h3",
+export const StyledTitleH2 = styled(Typography).attrs({
+  forwardedAs: "h2",
   size: 36,
-  lineHeightMiltiplier: 1.1,
+  lineHeightMultiplier: 1.1,
   nowrap: true,
   ellipsis: true,
-  weight: 700,
+  weight: 500,
   color: "dark",
 })`
-  font-size: 36px;
   ${media.down("desktop")} {
     font-size: 30px;
     white-space: normal;

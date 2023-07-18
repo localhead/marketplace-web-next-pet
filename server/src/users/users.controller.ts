@@ -1,6 +1,3 @@
-import { LocalAuthGuard } from 'src/auth/local.auth.guard';
-import { CreateUserDto } from './data-transfer-objects/create-user.dto';
-import { UsersService } from './users.service';
 import {
   Body,
   Controller,
@@ -12,8 +9,9 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
+import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
+import { CreateUserDto } from './data-transfer-objects/create-user.dto';
 import {
   LoginCheckResponse,
   LoginUserRequest,
@@ -21,6 +19,8 @@ import {
   LogoutUserResponse,
   SignUpResponse,
 } from './types';
+import { UsersService } from './users.service';
+import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 
 // Step 8 пишем эндпойнт сайнАп который будет создавать пользователя
 

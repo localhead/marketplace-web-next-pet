@@ -1,4 +1,4 @@
-import { authSlice, userApi } from "@features/user";
+import { userApi } from "@features/user";
 
 import { modalsSlice } from "@features/modals/store/slice";
 
@@ -7,7 +7,7 @@ import { createWrapper } from "next-redux-wrapper";
 
 const combinedReducer = combineReducers({
   [modalsSlice.name]: modalsSlice.reducer,
-  [authSlice.name]: authSlice.reducer,
+
   [userApi.reducerPath]: userApi.reducer,
 });
 

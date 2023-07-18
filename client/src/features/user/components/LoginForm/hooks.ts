@@ -7,13 +7,13 @@ import { FormState } from "react-hook-form";
 import * as yup from "yup";
 
 const DEFAULT_VALUES: LoginFormValues = {
-  login: "",
+  username: "",
   password: "",
 };
 
 export const validationSchema: yup.SchemaOf<LoginFormValues> = yup
   .object({
-    login: stringValidation()
+    username: stringValidation()
       .email("Неправильный формат email")
       .required("Заполните поле email"),
     password: stringValidation().required("Заполните поле с паролем"),
