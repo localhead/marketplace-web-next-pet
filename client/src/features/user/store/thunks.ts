@@ -11,7 +11,6 @@ export const login = createAsyncThunk<void, LoginRequest>(
       const res = await dispatch(
         userApi.endpoints.login.initiate(args)
       ).unwrap();
-      console.log(res);
     } catch (error) {
       throw rejectWithValue(error);
     }

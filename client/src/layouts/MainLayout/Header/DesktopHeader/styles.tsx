@@ -12,6 +12,14 @@ export const StyledHeaderContainer = styled(Container)`
   flex-direction: column;
 `;
 
+export const StyledTopContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+`;
+
 export const StyledOverlay = styled.div`
   position: absolute;
   top: 0;

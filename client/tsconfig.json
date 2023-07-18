@@ -18,7 +18,7 @@
     "paths": {
       // "--use-npm": ["./src/*"],
       // "@assets": ["./src/assets"],
-      "@assets/*": ["./public/assets/*"],
+      "@assets/*": ["./public/*"],
       // // "@components": ["src/components"],
       "@components/*": ["./src/components/*"],
       // // "@features": ["src/features"],
@@ -36,6 +36,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "file-declorations.d.ts", "**/*.ts", "**/*.tsx", "src/utils/prevent-roboto.js"],
+  "include": [
+    "next-env.d.ts",
+    "file-declorations.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/utils/prevent-roboto.js"
+  ],
   "exclude": ["node_modules"]
 }

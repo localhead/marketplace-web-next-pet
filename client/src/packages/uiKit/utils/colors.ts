@@ -2,9 +2,9 @@ export const colors = {
   primary: "#222222",
   primaryLight: "#727272",
 
-  dark: "#123F49",
+  dark: "#222222",
 
-  gray1: "#DBE4EC",
+  gray1: "#888888",
   gray2: "#9CA5AD",
   gray3: "#9AA9B6",
   gray4: "#89929B",
