@@ -1,6 +1,7 @@
-import React, { FC, memo } from 'react';
+import React, { memo } from 'react';
 
-import { Styled{{pascalCase}} } from './styles'
+import { Styled } from {};
+{pascalCase}} } from './styles'
 
 export interface {{pascalCase}}Props {
   className?: string;

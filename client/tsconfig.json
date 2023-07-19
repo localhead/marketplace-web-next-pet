@@ -41,7 +41,8 @@
     "file-declorations.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/utils/prevent-roboto.js"
+    "src/utils/prevent-roboto.js",
+    "../template.tsx"
   ],
   "exclude": ["node_modules"]
 }

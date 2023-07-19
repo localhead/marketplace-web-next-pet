@@ -20,6 +20,17 @@ export const StyledTopContainer = styled.div`
   margin-top: 15px;
 `;
 
+export const StyledBottomContainer = styled.div`
+  padding: 30px 0px 25px 0px;
+  display: flex;
+  align-items: center;
+`;
+
+export const StyledProductsNavigationLinksContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
 export const StyledOverlay = styled.div`
   position: absolute;
   top: 0;

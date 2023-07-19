@@ -67,7 +67,7 @@ const colorConfig: Record<
   "secondary-outlined": {
     textColor: colors.dark,
     bgColor: "transparent",
-    borderColor: colors.gray1,
+    borderColor: colors.gray3,
 
     hoverTextColor: colors.dark,
     hoverBgColor: "transparent",

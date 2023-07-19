@@ -7,3 +7,8 @@ export const StyledTestContent = styled.div`
   background-color: antiquewhite;
 `;
 export const StyledSection = styled(Section)``;
+
+export const StyledLol = styled.div`
+  width: auto;
+  height: 1000px;
+`;

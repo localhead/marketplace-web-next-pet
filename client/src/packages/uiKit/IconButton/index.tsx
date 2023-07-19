@@ -12,7 +12,7 @@ export interface IconButtonProps
 
 export const IconButton: FC<IconButtonProps> = (props) => {
   const {
-    size = "large",
+    size = "default",
     variant = "text",
     rounded = true,
     ...restProps

@@ -53,11 +53,11 @@ export default function App({ Component, ...rest }: AppProps) {
             <meta name="theme-color" content="#ffffff"></meta>
             <link
               rel="icon"
-              type="image/svg"
+              type="image/png"
               sizes="32x32"
-              href="/vector/logo.svg"
+              href="/bitmap/smallLogo.png"
             />
-            <title>Portal Store</title>
+            <title>Snapback Store</title>
           </Head>
 
           <main className={onestFont.className}>

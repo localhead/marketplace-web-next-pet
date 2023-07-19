@@ -13,7 +13,7 @@ const sizeStylesMap: Record<IconButtonSize, FlattenSimpleInterpolation> = {
     padding: 5px;
   `,
   default: css`
-    padding: 12px;
+    padding: 8px;
   `,
   large: css`
     padding: 13px;
@@ -50,10 +50,11 @@ const variantStylesMap: Record<IconButtonVariant, FlattenSimpleInterpolation> =
     `,
 
     secondary: css`
-      background-color: ${colors.gray9};
+      background-color: transparent;
       color: ${colors.dark};
+      border: 1px solid transparent;
       :hover {
-        background-color: ${colors.gray8};
+        background-color: ${colors.gray2};
       }
     `,
 
@@ -67,7 +68,7 @@ const variantStylesMap: Record<IconButtonVariant, FlattenSimpleInterpolation> =
 
     "outlined-circle": css`
       background-color: transparent;
-      border: 1px solid ${colors.gray21};
+      border: 1px solid ${colors.gray5};
       color: ${colors.dark};
 
       :hover {
@@ -76,7 +77,7 @@ const variantStylesMap: Record<IconButtonVariant, FlattenSimpleInterpolation> =
     `,
     "white-outlined-circle": css`
       background-color: transparent;
-      border: 1px solid ${colors.gray21};
+      border: 1px solid ${colors.gray5};
       color: ${colors.white};
 
       :hover {
@@ -85,7 +86,7 @@ const variantStylesMap: Record<IconButtonVariant, FlattenSimpleInterpolation> =
     `,
     "primary-outlined-circle": css`
       background-color: transparent;
-      border: 1px solid ${colors.gray21};
+      border: 1px solid ${colors.gray5};
       color: ${colors.primary};
 
       :hover {
@@ -95,11 +96,11 @@ const variantStylesMap: Record<IconButtonVariant, FlattenSimpleInterpolation> =
     "white-background": css`
       background-color: ${colors.white};
       border: 1px solid ${colors.white};
-      color: ${colors.primaryVaguely};
+      color: ${colors.blue};
 
       :hover {
-        background-color: ${colors.gray6};
-        border: 1px solid ${colors.gray6};
+        background-color: ${colors.gray5};
+        border: 1px solid ${colors.gray5};
       }
     `,
   };
@@ -128,7 +129,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   ${({ $rounded }) =>
     !$rounded &&
     css`
-      border-radius: 16px;
+      border-radius: 10px;
     `}
 
   ${({ disabled }) =>

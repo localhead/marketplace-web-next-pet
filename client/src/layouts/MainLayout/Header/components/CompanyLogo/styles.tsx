@@ -10,7 +10,7 @@ export const StyledImage = styled(Image).attrs({
   width: 400,
   height: 100,
 })`
-  width: 170px;
+  width: 150px;
   height: auto;
   cursor: pointer;
 `;

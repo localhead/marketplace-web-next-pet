@@ -4,9 +4,9 @@ export const colors = {
 
   dark: "#222222",
 
-  gray1: "#888888",
-  gray2: "#9CA5AD",
-  gray3: "#9AA9B6",
+  gray1: "#797979",
+  gray2: "#E9E9E9",
+  gray3: "#B6B6B6",
   gray4: "#89929B",
   gray5: "#C3D1E1",
 
@@ -16,7 +16,7 @@ export const colors = {
   blue: "#60AEF5",
   green: "#58C546",
 
-  red1: "#E21D24",
+  red: "#FF0100",
 
   dark1: "#929292",
   dark2: "#082F2F",

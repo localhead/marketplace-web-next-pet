@@ -3,15 +3,17 @@ import { paths } from "@features/routering/paths";
 import { LoginForm } from "@features/user/components/LoginForm";
 import { RegistrationForm } from "@features/user/components/RegistrationForm";
 import { useModalState } from "@hooks/useModalState";
-import { Modal, SelectTabs } from "@packages/uiKit";
-import { Button } from "@packages/uiKit/Button";
+import { UserIcon } from "@packages/icons";
+import { IconButton, Modal, SelectTabs } from "@packages/uiKit";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
-import { StyledHeaderAuthenticationSection } from "./styles";
+import { FC, memo, useState } from "react";
+import { StyledAuthButton } from "./styles";
 
-export interface HeaderAuthenticationSectionProps {
+interface AuthButtonProps {
   className?: string;
   style?: React.CSSProperties;
+
+  iconSize: number;
 }
 
 enum Auth {
@@ -19,18 +21,16 @@ enum Auth {
   Register = "register",
 }
 
-export const HeaderAuthenticationSection: FC<
-  HeaderAuthenticationSectionProps
-> = (props) => {
-  const { ...restProps } = props;
+export const _AuthButton: FC<AuthButtonProps> = (props) => {
+  const { iconSize = 20, ...restProps } = props;
 
   const [activeTab, setActiveTab] = useState(Auth.Login);
+
+  const router = useRouter();
 
   const registrationSubmitHandler = () => {
     setActiveTab(Auth.Login);
   };
-
-  const router = useRouter();
 
   const loginSubmitHandler = () => {
     router.push(paths.profile());
@@ -45,10 +45,15 @@ export const HeaderAuthenticationSection: FC<
   };
 
   return (
-    <StyledHeaderAuthenticationSection>
-      <Button size="medium" variant="primary" onClick={onAuthClickHandler}>
-        Войти
-      </Button>
+    <StyledAuthButton>
+      <IconButton
+        onClick={onAuthClickHandler}
+        variant="secondary"
+        rounded={false}
+        size="default"
+      >
+        <UserIcon size={iconSize} />
+      </IconButton>
 
       <Modal
         title="Войдите или создайте аккаунт"
@@ -72,6 +77,8 @@ export const HeaderAuthenticationSection: FC<
           <RegistrationForm onSubmit={registrationSubmitHandler} />
         )}
       </Modal>
-    </StyledHeaderAuthenticationSection>
+    </StyledAuthButton>
   );
 };
+
+export const AuthButton = memo(_AuthButton);
