@@ -7,10 +7,15 @@ import {
   HttpStatus,
   Post,
   Request,
+  UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
-import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
+import {
+  ApiBody,
+  ApiOkResponse,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 import { CreateUserDto } from './data-transfer-objects/create-user.dto';
 import {
   LoginCheckResponse,
@@ -20,7 +25,6 @@ import {
   SignUpResponse,
 } from './types';
 import { UsersService } from './users.service';
-import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 
 // Step 8 пишем эндпойнт сайнАп который будет создавать пользователя
 
@@ -54,10 +58,14 @@ export class UsersController {
   // Step 18
   // Step 24 - для типы свагера
   @ApiOkResponse({ type: LoginCheckResponse })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @Get('/login-check')
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   loginCheck(@Request() req) {
-    return req.user;
+    if (!req.user) {
+      throw new UnauthorizedException('User not logged in');
+    }
+    return { user: req.user, msg: `User ${req.user.username} is logged in` };
   }
 
   // Step 19

@@ -33,14 +33,17 @@ export class LoginUserResponse {
 }
 
 export class LoginCheckResponse {
-  @ApiProperty({ example: 'Ivan' })
-  username: string;
+  @ApiProperty({
+    example: { user: { userId: 1, username: 'Ivan', password: 'teSt123' } },
+  })
+  user: {
+    userId: number;
+    username: string;
+    password: string;
+  };
 
-  @ApiProperty({ example: '1234' })
-  password: string;
-
-  @ApiProperty({ example: 'ivan@mail.ru' })
-  email: string;
+  @ApiProperty({ example: 'message' })
+  msg: string;
 }
 
 export class LogoutUserResponse {

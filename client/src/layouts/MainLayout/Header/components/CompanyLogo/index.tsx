@@ -7,13 +7,17 @@ export interface CompanyLogoProps {
 }
 
 import logo from "@assets/bitmap/logo.png";
+import { paths } from "@features/routering/paths";
+import Link from "next/link";
 
 export const CompanyLogo: FC<CompanyLogoProps> = (props) => {
   const { ...restProps } = props;
 
   return (
     <StyledCompanyLogo>
-      <StyledImage src={logo} alt="company logo"></StyledImage>
+      <Link href={paths.root()}>
+        <StyledImage src={logo} alt="company logo"></StyledImage>
+      </Link>
     </StyledCompanyLogo>
   );
 };

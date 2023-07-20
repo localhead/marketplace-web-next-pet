@@ -1,4 +1,4 @@
-import { userApi } from "@features/user";
+import { authSlice, userApi } from "@features/user";
 
 import { modalsSlice } from "@features/modals/store/slice";
 
@@ -9,6 +9,7 @@ const combinedReducer = combineReducers({
   [modalsSlice.name]: modalsSlice.reducer,
 
   [userApi.reducerPath]: userApi.reducer,
+  [authSlice.name]: authSlice.reducer,
 });
 
 const makeStore = () => {

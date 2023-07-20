@@ -1,15 +1,12 @@
 export type AuthState = {
-  isAuth: false;
-  accessToken: null;
+  isAuth: boolean;
+  user: User;
 };
 
-export type UserProfileInfo = {
-  id: number;
+export type User = {
+  userId: number;
+  username: string;
   email: string;
-  name: string;
-  surname?: string;
-  patronymic?: string;
-  tel: string;
 };
 
 export type LoginRequest = {
@@ -18,29 +15,25 @@ export type LoginRequest = {
 };
 export type LoginResponse = {
   user: {
-    user: {
-      userId: number;
-      username: string;
-      password: string;
-    };
+    userId: number;
+    username: string;
+    email: string;
   };
   msg: string;
 };
 
-export type ResetPasswordConfirmRequest = {
-  password: string;
-  token: string;
-};
-export type ResetPasswordConfirmResponse = void;
-
-export type ResetPasswordValidateTokenRequest = {
-  token: string;
-};
-
-export type ResetPasswordValidateTokenResponse = void;
-
 export type LogoutRequest = void;
-export type LogoutResponse = void;
+export type LogoutResponse = { msg: string };
+
+export type LoginCheckRequest = void;
+export type LoginCheckResponse = {
+  user: {
+    userId: number;
+    username: string;
+    email: string;
+  };
+  msg: string;
+};
 
 export type RegistrationResponse = {
   id: number;

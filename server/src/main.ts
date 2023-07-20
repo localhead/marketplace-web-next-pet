@@ -22,7 +22,7 @@ async function bootstrap() {
   // без этих корсов ты не сможешь сделать запрос
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3001'],
   });
 
   // Step 13 - реализуем логику сессий.

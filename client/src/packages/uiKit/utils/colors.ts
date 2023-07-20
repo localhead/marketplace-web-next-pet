@@ -26,6 +26,7 @@ export const colors = {
   //newGrays
 
   white: "#fff",
+  transparent: "transparent",
 };
 
 export type AppColor = keyof typeof colors;

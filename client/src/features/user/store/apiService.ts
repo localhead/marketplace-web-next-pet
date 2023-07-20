@@ -1,6 +1,8 @@
 import { getQueryWithNoRefresh } from "@features/queryClient/queryWithNoRefresh";
 import { createApi } from "@reduxjs/toolkit/dist/query/react";
 import {
+  LoginCheckRequest,
+  LoginCheckResponse,
   LoginRequest,
   LoginResponse,
   LogoutRequest,
@@ -25,10 +27,17 @@ export const userApi = createApi({
         }),
       }),
 
-      logout: builder.mutation<LogoutResponse, LogoutRequest>({
+      logout: builder.query<LogoutResponse, LogoutRequest>({
         query: () => ({
           url: "logout/",
-          method: "POST",
+          method: "GET",
+        }),
+      }),
+
+      loginCheck: builder.query<LoginCheckResponse, LoginCheckRequest>({
+        query: () => ({
+          url: "login-check/",
+          method: "GET",
         }),
       }),
 

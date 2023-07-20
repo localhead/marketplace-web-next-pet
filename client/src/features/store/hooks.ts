@@ -1,6 +1,6 @@
-import { AppDispatch, AppRootState } from './types';
+import { AppDispatch, AppRootState } from "./types";
 
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 // Используйте эти хуки в приложении, потому что в них протипизирован appStore и thunks
 export const useAppDispatch = () => useDispatch<AppDispatch>();

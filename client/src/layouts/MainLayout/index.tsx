@@ -1,4 +1,4 @@
-import { Content } from "./Header/Content";
+import { Content } from "./Content";
 import { StyledContent, StyledMainLayout } from "./styles";
 
 import { useAdaptiveParam } from "@features/adaptive/useAdaptiveParam";

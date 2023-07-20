@@ -22,8 +22,8 @@ export const UserControlButtonsSection: FC<UserControlButtonsSectionProps> = (
     <StyledUserControlButtonsSection>
       <StyledLeftContainer>
         <InternationalizationButton iconSize={ICON_SIZE} />
-        <FavoritesButton iconSize={ICON_SIZE} />
         <AuthButton iconSize={ICON_SIZE} />
+        <FavoritesButton iconSize={ICON_SIZE} />
       </StyledLeftContainer>
 
       <ShoppingCartButton />

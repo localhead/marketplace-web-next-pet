@@ -28,12 +28,12 @@ const colorConfig: Record<
   },
   secondary: {
     textColor: colors.dark,
-    bgColor: colors.gray4,
-    borderColor: colors.gray4,
+    bgColor: "transparent",
+    borderColor: "transparent",
 
     hoverTextColor: colors.dark,
-    hoverBgColor: colors.gray1,
-    hoverBorderColor: colors.gray1,
+    hoverBgColor: colors.gray2,
+    hoverBorderColor: colors.gray2,
   },
   white: {
     textColor: colors.gray4,

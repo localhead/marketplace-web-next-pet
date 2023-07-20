@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import { AdaptiveContext } from "@features/adaptive/components/AdaptiveContext";
 import { storeWrapper } from "@features/store/store";
+import { CheckInitialLogin } from "@utils/CheckInitialLogin";
 import { GlobalStyle, onestFont } from "@utils/globalStyle";
 import { NextAdapter } from "next-query-params";
 import { QueryParamProvider } from "use-query-params";
@@ -18,6 +19,7 @@ export default function App({ Component, ...rest }: AppProps) {
     <Provider store={store}>
       <QueryParamProvider adapter={NextAdapter}>
         <NextNProgress />
+        <CheckInitialLogin />
         <AdaptiveContext>
           <GlobalStyle />
           <Head>
