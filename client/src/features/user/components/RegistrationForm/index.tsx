@@ -1,3 +1,4 @@
+import { Space } from "@components/Space";
 import { useRegistrationForm, UseRegistrationFormParams } from "./hooks";
 import {
   StyledAgreeCheckboxLabel,
@@ -111,45 +112,44 @@ const _RegistrationForm: FC<RegistrationFormProps> = (props) => {
 
       <Form.Error error={formError} />
 
-      <Form.ButtonsContainer>
-        <Row gutter={[21, 24]} wrap={width === "mobile"} align="middle">
-          <Col
-            span={width === "mobile" ? 24 : undefined}
-            order={isMobile ? 1 : 0}
+      <Space size={25} />
+      <Row gutter={[21, 24]} wrap={width === "mobile"} align="middle">
+        <Col
+          span={width === "mobile" ? 24 : undefined}
+          order={isMobile ? 1 : 0}
+        >
+          <Button
+            disabled={isLoadingRegistration}
+            variant="primary"
+            size="extralarge"
+            block
+            onClick={handleSubmit}
           >
-            <Button
-              disabled={isLoadingRegistration}
-              variant="primary"
-              size="extralarge"
-              block
-              onClick={handleSubmit}
-            >
-              Зарегистрироваться
-            </Button>
-          </Col>
-          <Col
-            span={width === "mobile" ? 24 : undefined}
-            order={isMobile ? 0 : 1}
-          >
-            <CheckboxAdapter
-              control={control}
-              name="isAgree"
-              label={
-                <StyledAgreeCheckboxLabel>
-                  Согласие с{" "}
-                  <StyledAgreeLink
-                    onClick={(e) => e.stopPropagation()}
-                    href="/"
-                    target={"_blank"}
-                  >
-                    политикой конфиденциальности
-                  </StyledAgreeLink>
-                </StyledAgreeCheckboxLabel>
-              }
-            />
-          </Col>
-        </Row>
-      </Form.ButtonsContainer>
+            Зарегистрироваться
+          </Button>
+        </Col>
+        <Col
+          span={width === "mobile" ? 24 : undefined}
+          order={isMobile ? 0 : 1}
+        >
+          <CheckboxAdapter
+            control={control}
+            name="isAgree"
+            label={
+              <StyledAgreeCheckboxLabel>
+                Согласие с{" "}
+                <StyledAgreeLink
+                  onClick={(e) => e.stopPropagation()}
+                  href="/"
+                  target={"_blank"}
+                >
+                  политикой конфиденциальности
+                </StyledAgreeLink>
+              </StyledAgreeCheckboxLabel>
+            }
+          />
+        </Col>
+      </Row>
     </StyledRegistrationForm>
   );
 };

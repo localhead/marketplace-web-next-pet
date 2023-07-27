@@ -1,5 +1,6 @@
 import React, { FC, memo, useCallback } from "react";
 
+import { Space } from "@components/Space";
 import { Form } from "@features/forms/components/Form";
 import { InputFieldAdapter } from "@features/forms/components/InputFieldAdapter";
 import { PasswordFieldAdapter } from "@features/forms/components/PasswordFieldAdapter";
@@ -82,28 +83,27 @@ const _LoginForm: FC<LoginFormProps> = (props) => {
         </Row>
       </Form.Content>
       <Form.Error error={formError} />
-      <Form.ButtonsContainer>
-        <Row gutter={[15, 15]} align="middle">
-          <Col>
-            <Button variant="primary" size="extralarge" onClick={handleSubmit}>
-              Войти
-            </Button>
-          </Col>
-          <Col>
-            <FormAdditionalButton
-              icon={<KeyIcon />}
-              title={
-                <>
-                  Восстановить&nbsp;
-                  <br />
-                  пароль
-                </>
-              }
-              onSubmit={restorePasswordClickHandler}
-            />
-          </Col>
-        </Row>
-      </Form.ButtonsContainer>
+      <Space size={25} />
+      <Row gutter={[15, 15]} align="middle">
+        <Col>
+          <Button variant="primary" size="extralarge" onClick={handleSubmit}>
+            Войти
+          </Button>
+        </Col>
+        <Col>
+          <FormAdditionalButton
+            icon={<KeyIcon />}
+            title={
+              <>
+                Восстановить&nbsp;
+                <br />
+                пароль
+              </>
+            }
+            onSubmit={restorePasswordClickHandler}
+          />
+        </Col>
+      </Row>
     </StyledLoginForm>
   );
 };
