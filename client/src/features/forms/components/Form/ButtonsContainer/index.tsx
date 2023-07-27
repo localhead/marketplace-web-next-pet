@@ -1,6 +1,6 @@
-import { StyledButtonsContainer } from './styles';
+import { StyledButtonsContainer } from "./styles";
 
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from "react";
 
 export interface ButtonsContainerProps extends PropsWithChildren {
   className?: string;

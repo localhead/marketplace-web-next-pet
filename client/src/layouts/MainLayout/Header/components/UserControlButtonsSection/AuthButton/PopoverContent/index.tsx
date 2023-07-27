@@ -1,37 +1,99 @@
+import { paths } from "@features/routering/paths";
 import { useAppDispatch, useAppSelector } from "@features/store";
 import { logout } from "@features/user";
-import { Button } from "@packages/uiKit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
+import { useRouter } from "next/router";
 import { FC, memo, useCallback } from "react";
-import { StyledPopoverContent, StyledTitle } from "./styles";
+import {
+  BottomContentContainer,
+  CustomButton,
+  MiddleContentContainer,
+  StyledCloseIcon,
+  StyledPopoverContent,
+  StyledTitle,
+  TopContentContainer,
+} from "./styles";
 
 interface PopoverContentProps {
   className?: string;
   style?: React.CSSProperties;
+
+  onClose: () => void;
 }
 
+type PopoverNavigationItem = {
+  label: string;
+  link: string;
+};
+
+const popoverNavigationList: PopoverNavigationItem[] = [
+  {
+    label: "Персональные данные",
+    link: paths.notImplemented(),
+  },
+  {
+    label: "Заказы и возвраты",
+    link: paths.notImplemented(),
+  },
+  {
+    label: "Отзывы и вопросы",
+    link: paths.notImplemented(),
+  },
+  {
+    label: "Управление подписками",
+    link: paths.notImplemented(),
+  },
+];
+
 export const _PopoverContent: FC<PopoverContentProps> = (props) => {
-  const { ...restProps } = props;
+  const { onClose, ...restProps } = props;
 
   const dispatch = useAppDispatch();
   const authUserInStore = useAppSelector((state) => state.auth.user);
+  const router = useRouter();
 
   const logoutClickHandler = useCallback(async () => {
     try {
       await dispatch(logout()).unwrap();
+      router.push(paths.root());
     } catch (e) {
       if ((e as FetchBaseQueryError).status === 401) {
         throw new Error("Error while logout");
       }
     }
-  }, [dispatch]);
+  }, [dispatch, router]);
+
+  const navigateHandler = useCallback(
+    (href: string) => {
+      router.push(href);
+    },
+    [router]
+  );
 
   return (
     <StyledPopoverContent>
-      <StyledTitle>{authUserInStore && authUserInStore.username}</StyledTitle>
-      <Button variant="secondary" size="medium" onClick={logoutClickHandler}>
-        Выйти
-      </Button>
+      <TopContentContainer>
+        <StyledTitle>{authUserInStore && authUserInStore.username}</StyledTitle>
+        <StyledCloseIcon onClick={onClose} size={20} />
+      </TopContentContainer>
+      <MiddleContentContainer>
+        {popoverNavigationList.map((item, index) => {
+          return (
+            <CustomButton
+              key={index}
+              onClick={() => {
+                navigateHandler(item.link);
+              }}
+            >
+              {item.label}
+            </CustomButton>
+          );
+        })}
+      </MiddleContentContainer>
+      <BottomContentContainer>
+        {" "}
+        <CustomButton onClick={logoutClickHandler}>Выйти</CustomButton>
+      </BottomContentContainer>
     </StyledPopoverContent>
   );
 };

@@ -1,5 +1,4 @@
 import { Space } from "@components/Space";
-import { paths } from "@features/routering/paths";
 import { useAppSelector } from "@features/store";
 import { LoginForm } from "@features/user/components/LoginForm";
 import { RegistrationForm } from "@features/user/components/RegistrationForm";
@@ -39,7 +38,8 @@ export const _AuthButton: FC<AuthButtonProps> = (props) => {
   const authUserInStore = useAppSelector((state) => state.auth.user);
 
   const loginSubmitHandler = () => {
-    router.push(paths.profile());
+    //router.push(paths.profile());
+    setModalActions.closeHandler();
   };
 
   const toggleTab = activeTab === Auth.Login;
@@ -50,13 +50,39 @@ export const _AuthButton: FC<AuthButtonProps> = (props) => {
     !isAuth && setModalActions.openHandler();
   };
 
+  // For popover
+  const [visible, setVisible] = useState(false);
+
+  const handleClose = () => {
+    setVisible(false);
+  };
+
+  const handleVisibleChange = (visible: boolean) => {
+    setVisible(visible);
+  };
+
   return (
     <StyledAuthButton>
-      <Popover
-        content={<PopoverContent />}
-        trigger="click"
-        placement="bottomRight"
-      >
+      {isAuth && (
+        <Popover
+          open={visible}
+          content={<PopoverContent onClose={handleClose} />}
+          onOpenChange={handleVisibleChange}
+          placement="bottomRight"
+          trigger="click"
+        >
+          <IconButton variant="secondary" rounded={false} size="default">
+            <UserIcon size={iconSize} />
+            {authUserInStore && (
+              <StyledUsernameTitle>
+                {authUserInStore.username}
+              </StyledUsernameTitle>
+            )}
+          </IconButton>
+        </Popover>
+      )}
+
+      {!isAuth && (
         <IconButton
           onClick={onAuthClickHandler}
           variant="secondary"
@@ -70,7 +96,7 @@ export const _AuthButton: FC<AuthButtonProps> = (props) => {
             </StyledUsernameTitle>
           )}
         </IconButton>
-      </Popover>
+      )}
 
       <Modal
         title="Войдите или создайте аккаунт"

@@ -19,6 +19,7 @@ export interface DesktopHeaderProps {
 import { CompanyLogo } from "../components/CompanyLogo";
 import { CustomerSelectorTabs } from "../components/CustomerSelectorTabs";
 import { HeaderBottomDivider } from "../components/HeaderBottomDivider";
+import { HeaderSearchForm } from "../components/HeaderSearchForm";
 import { ProductNavigationLink } from "../components/ProductNavigationLink";
 import { UserControlButtonsSection } from "../components/UserControlButtonsSection";
 import { mockProductNavigationList } from "../constants";
@@ -72,6 +73,7 @@ const _DesktopHeader: FC<DesktopHeaderProps> = (props) => {
                   );
                 })}
               </StyledProductsNavigationLinksContainer>
+              <HeaderSearchForm />
             </StyledBottomContainer>
           </Container>
 

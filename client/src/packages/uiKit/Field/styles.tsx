@@ -29,14 +29,14 @@ export const StyledField = styled.div<{
   display: flex;
   border-radius: 10px;
   align-items: center;
-  border: 1px solid ${colors.gray1};
+  border: 1px solid ${colors.gray5};
   height: 100%;
   background-color: ${colors.white};
 
   ${({ $hasError }) =>
     $hasError &&
     css`
-      border-color: ${colors.red1};
+      border-color: ${colors.red};
     `}
   ${({ $variant }) =>
     $variant === "rounded" &&
@@ -51,9 +51,13 @@ export const StyledLeftContainer = styled.div`
 `;
 export const StyledRightContainer = styled.div`
   align-self: center;
-  padding: 0 20px;
-  font-size: 20px;
+  padding: 6px 10px;
+
+  font-size: 18px;
+
   display: flex;
+  //border: 1px solid ${colors.gray3};
+  border-radius: 10px;
   align-items: center;
 `;
 
@@ -76,7 +80,7 @@ export const StyledFieldLabel = styled(Typography).attrs({
 
 export const StyledFieldError = styled(Typography).attrs({
   size: 12,
-  color: "red1",
+  color: "red",
   nowrap: true,
   ellipsis: true,
 })<{ $isFilled?: boolean }>`

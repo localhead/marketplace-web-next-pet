@@ -1,16 +1,17 @@
-import { ButtonsContainer } from './ButtonsContainer';
-import { Content } from './Content';
-import { Error } from './Error';
-import { StyledForm } from './styles';
+import { ButtonsContainer } from "./ButtonsContainer";
+import { Content } from "./Content";
+import { Error } from "./Error";
+import { StyledForm } from "./styles";
 
-import { Title } from './Title';
+import { Title } from "./Title";
 
-import React, { FC, PropsWithChildren, useCallback } from 'react';
+import React, { FC, PropsWithChildren, useCallback } from "react";
 
 export interface FormProps extends PropsWithChildren {
   className?: string;
   style?: React.CSSProperties;
   autoComplete?: string;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const Form: FC<FormProps> & {
@@ -19,13 +20,14 @@ export const Form: FC<FormProps> & {
   ButtonsContainer: typeof ButtonsContainer;
   Error: typeof Error;
 } = (props) => {
-  const { ...restProps } = props;
+  const { onSubmit, ...restProps } = props;
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       e.preventDefault();
+      onSubmit?.(e);
     },
-    [],
+    [onSubmit]
   );
 
   return <StyledForm onSubmit={submitHandler} {...restProps} />;
