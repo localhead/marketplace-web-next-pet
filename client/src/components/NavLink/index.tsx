@@ -1,6 +1,7 @@
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import { FC, memo, ReactNode } from "react";
+import { StyledLink } from "./styles";
 
 export interface NavLinkProps extends LinkProps {
   children?: ReactNode;
@@ -28,9 +29,11 @@ const _NavLink: FC<NavLinkProps> = (props) => {
     : className;
 
   return (
-    <Link href={href} as={as} className={_className} {...restProps}>
-      {children}
-    </Link>
+    <StyledLink>
+      <Link href={href} as={as} className={_className} {...restProps}>
+        {children}
+      </Link>
+    </StyledLink>
   );
 };
 

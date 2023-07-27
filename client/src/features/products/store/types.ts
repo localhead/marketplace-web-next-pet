@@ -27,5 +27,5 @@ export type GetBySearchNameResponse = {
 };
 
 export type GetBySearchNameRequest = {
-  search: string | null;
+  search: string | string[] | undefined | null;
 };

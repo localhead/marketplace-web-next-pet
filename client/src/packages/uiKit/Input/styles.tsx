@@ -22,8 +22,10 @@ export const StyledInput = styled.input`
 
 const variantStylesMap: Record<InputVariant, FlattenSimpleInterpolation> = {
   outlined: css`
-    border: 1px solid ${colors.gray1};
+    border: 1px solid ${colors.gray5};
     background-color: ${colors.white};
+
+    transition: 0.3s ease;
 
     ${StyledInput} {
       ::placeholder {
@@ -33,34 +35,35 @@ const variantStylesMap: Record<InputVariant, FlattenSimpleInterpolation> = {
 
     :focus,
     :focus-within {
-      border-color: ${colors.gray3};
+      border-color: ${colors.gray1};
     }
   `,
   filled: css`
-    background-color: ${colors.gray7};
+    border: 1px solid ${colors.gray5};
+    background-color: ${colors.gray2};
 
     :focus,
     :focus-within {
       outline: none;
-      border-color: ${colors.gray5};
+      border-color: ${colors.gray1};
     }
   `,
 };
 
 const sizeStylesMap: Record<InputSize, FlattenSimpleInterpolation> = {
   small: css`
-    padding: 5px 5px 5px 15px;
-    border-radius: 30px;
+    padding: 5px 8px 5px 0px;
+    border-radius: 10px;
     min-height: 30px;
 
     ${StyledInput} {
       margin: 0 10px;
-      font-size: 18px;
+      font-size: 14px;
     }
   `,
   medium: css`
     padding: 12px 12px;
-    border-radius: 30px;
+    border-radius: 10px;
 
     ${StyledInput} {
       margin: 0 16px;

@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from "@packages/icons";
-import { colors } from "@packages/uiKit";
-import { InputField } from "@packages/uiKit/fields";
+import { Input, colors } from "@packages/uiKit";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const StyledHeaderSearchForm = styled.div``;
@@ -19,7 +19,7 @@ export const StyledMagnifyingGlassIcon = styled(MagnifyingGlassIcon)`
 
 export const StyledInputContainer = styled.div``;
 
-export const StyledInputField = styled(InputField)``;
+export const StyledInputField = styled(Input)``;
 
 export const StyledAutocompleteDropdown = styled.div`
   background-color: transparent;
@@ -35,7 +35,7 @@ export const StyledAutocompleteDropdown = styled.div`
   padding: 5px 5px;
 `;
 
-export const StyledRowItem = styled.button`
+export const StyledRowItem = styled.div`
   cursor: pointer;
   border-radius: 8px;
   padding: 10px 10px;
@@ -47,4 +47,12 @@ export const StyledRowItem = styled.button`
     background-color: ${colors.gray2};
   }
   font-size: 12px;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${colors.dark};
+
+  :hover {
+    color: ${colors.dark};
+  }
 `;
