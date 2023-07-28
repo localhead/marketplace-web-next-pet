@@ -1,15 +1,6 @@
-import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
-import { BoilerPartsService } from './boiler-parts.service';
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Query,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
+import { BoilerPartsService } from './boiler-parts.service';
 import {
   FindOneResponse,
   GetBestsellersResponse,
@@ -28,7 +19,7 @@ export class BoilerPartsController {
   // Step 40 - подключим методы в контроллере
   // Step 41 - ApiOkResponse - описание типов для свагера
   @ApiOkResponse({ type: PaginateAndFilterResponse })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get()
   paginateAndFilter(@Query() query) {
     return this.boilerPartsService.paginateAndFilter(query);
@@ -36,7 +27,7 @@ export class BoilerPartsController {
 
   // Step 41 - ApiOkResponse - описание типов для свагера
   @ApiOkResponse({ type: FindOneResponse })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('find/:id')
   getOne(@Param('id') id: string) {
     return this.boilerPartsService.findOne(+id);
@@ -44,14 +35,14 @@ export class BoilerPartsController {
 
   // Step 41 - ApiOkResponse - описание типов для свагера
   @ApiOkResponse({ type: GetBestsellersResponse })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('bestsellers')
   getBestsellers() {
     return this.boilerPartsService.bestSellers();
   }
 
   @ApiOkResponse({ type: GetNewResponse })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('new')
   getNew() {
     return this.boilerPartsService.new();
@@ -59,7 +50,7 @@ export class BoilerPartsController {
 
   @ApiOkResponse({ type: SearchResponse })
   @ApiBody({ type: SearchRequest })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Post('search')
   search(@Body() { search }: { search: string }) {
     return this.boilerPartsService.findOneByString(search);
@@ -67,7 +58,7 @@ export class BoilerPartsController {
 
   @ApiOkResponse({ type: GetByNameResponse })
   @ApiBody({ type: GetByNameRequest })
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Post('name')
   getByName(@Body() { name }: { name: string }) {
     return this.boilerPartsService.findOneByName(name);

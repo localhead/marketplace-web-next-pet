@@ -69,8 +69,6 @@ export const _HeaderSearchForm: FC<HeaderSearchFormProps> = (props) => {
 
   useOutsideClick([selectRef, dropdownRef], handleClose, isVisible);
 
-  console.log(isVisible);
-
   // setting that dropdown is invisible by the start
   // useEffect(() => {
   //   setIsVisible(searchOptions.length >= 0 ? true : false);

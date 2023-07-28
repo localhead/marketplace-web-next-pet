@@ -19,7 +19,7 @@ export const _AuthControlBadge: FC<AuthControlBadgeProps> = (props) => {
   const isAuthInStore = useAppSelector((state) => state.auth.isAuth);
   const authUserInStore = useAppSelector((state) => state.auth.user);
 
-  console.log("Auth is store is ", isAuthInStore, authUserInStore);
+  //console.log("Auth is store is ", isAuthInStore, authUserInStore);
 
   return (
     <Container>

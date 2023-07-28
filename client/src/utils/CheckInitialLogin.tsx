@@ -17,8 +17,6 @@ export const _CheckInitialLogin: FC = () => {
     }
   }, [dispatch]);
 
-  console.log("checking if user is auth");
-
   useEffect(() => {
     loginCheckInitialFunction();
   }, [loginCheckInitialFunction]);

@@ -14,7 +14,6 @@ export const login = createAsyncThunk<void, LoginRequest>(
         userApi.endpoints.login.initiate(args)
       ).unwrap();
 
-      debugger;
       dispatch(authSlice.actions.setAuthDataInStorage(response.user));
     } catch (error) {
       throw rejectWithValue(error);
