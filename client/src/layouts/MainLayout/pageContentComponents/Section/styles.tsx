@@ -21,7 +21,7 @@ export const StyledTitleH2 = styled(Typography).attrs({
   lineHeightMultiplier: 1.1,
   nowrap: true,
   ellipsis: true,
-  weight: 500,
+  weight: 400,
   color: "dark",
 })`
   ${media.down("desktop")} {

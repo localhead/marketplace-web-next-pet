@@ -1,4 +1,9 @@
-export type BestSellersResponse = {
+export type BestsellerProductsResponse = {
+  count: number;
+  rows: BoilerPartsRecord;
+};
+
+export type NewProductsResponse = {
   count: number;
   rows: BoilerPartsRecord;
 };

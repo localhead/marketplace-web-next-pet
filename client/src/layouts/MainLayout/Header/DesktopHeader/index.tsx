@@ -44,8 +44,6 @@ const _DesktopHeader: FC<DesktopHeaderProps> = (props) => {
     };
   }, []);
 
-  console.log(scrolled);
-
   return (
     <>
       <StyledHeaderWrapper>

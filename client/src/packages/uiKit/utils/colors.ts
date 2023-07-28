@@ -7,7 +7,7 @@ export const colors = {
   gray1: "#797979",
   gray2: "#E9E9E9",
   gray3: "#B6B6B6",
-  gray4: "#89929B",
+  gray4: "#9E9E9E",
   gray5: "#DBDBDB",
 
   success: "#74C267",

@@ -27,8 +27,8 @@ const colorConfig: Record<
     hoverBorderColor: colors.primaryLight,
   },
   secondary: {
-    textColor: colors.dark,
-    bgColor: "transparent",
+    textColor: colors.white,
+    bgColor: colors.gray4,
     borderColor: "transparent",
 
     hoverTextColor: colors.dark,

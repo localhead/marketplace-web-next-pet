@@ -134,7 +134,7 @@ export const _HeaderSearchForm: FC<HeaderSearchFormProps> = (props) => {
                   <Button
                     size="small"
                     key={"last"}
-                    variant="secondary-outlined"
+                    variant="primary"
                     onClick={submitHandler}
                   >
                     поиск по сайту
