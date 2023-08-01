@@ -1,4 +1,4 @@
-import { StyledLol } from "@features/main/pages/MainPage/style";
+import { StyledTestContent } from "@features/main/pages/MainPage/style";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
 import { Container } from "@layouts/MainLayout/pageContentComponents/Container";
@@ -43,7 +43,7 @@ export const SearchPage: FC<SearchPageProps> = (props) => {
               return <div key={item.id}>{item.name}</div>;
             })}
           </Container>
-          <StyledLol />
+          <StyledTestContent />
         </MainLayout.Content>
       </MainLayout>
     </StyledSearchPage>

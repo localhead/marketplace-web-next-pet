@@ -1,4 +1,4 @@
-import { StyledLol } from "@features/main/pages/MainPage/style";
+import { StyledTestContent } from "@features/main/pages/MainPage/style";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
 import { Container } from "@layouts/MainLayout/pageContentComponents/Container";
@@ -20,7 +20,7 @@ export const ProductDetailPage: FC<ProductDetailPageProps> = (props) => {
         <AuthControlBadge />
         <Container>{`Карточка товара с id ${idNumber}`}</Container>
 
-        <StyledLol />
+        <StyledTestContent />
       </MainLayout.Content>
     </MainLayout>
   );
