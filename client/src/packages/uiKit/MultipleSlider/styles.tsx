@@ -1,27 +1,26 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledMultipleSlider = styled.div`
-  display: flex;
-`;
-
-export const StyledOverflowContainer = styled.div<{ $gap: number }>`
-  padding: ${({ $gap }) => `${$gap / 2}px`};
-  flex: 1;
   overflow: hidden;
 `;
 
-export const StyledSlidesContainer = styled.div``;
-
 export const StyledGrid = styled.div`
   position: relative;
-  flex: 1;
   display: grid;
   transition: left 0.3s ease-out;
 `;
 
-export const StyledSlideButtonContainer = styled.div`
-  width: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const StyledGridItem = styled.div<{ $isSquare: boolean }>`
+  /* width: 100%;
+  ${({ $isSquare }) =>
+    $isSquare &&
+    css`
+      :before {
+        content: "";
+        display: block;
+        height: 0;
+        width: 0;
+        padding-bottom: calc(100%);
+      }
+    `}*/
 `;

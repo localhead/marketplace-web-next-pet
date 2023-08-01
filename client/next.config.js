@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["data.halalguide.me"],
+    domains: ["loremflickr.com"],
   },
 
   webpack(config) {

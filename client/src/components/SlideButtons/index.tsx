@@ -9,8 +9,9 @@ export interface SlideButtonsProps {
   className?: string;
   style?: React.CSSProperties;
 
-  withShowAll?: boolean;
-  showAllLink?: string;
+  withButton?: boolean;
+  buttonLink?: string;
+  LinkTitle?: string;
 
   onNextClick?: () => void;
   onPrevClick?: () => void;
@@ -19,24 +20,25 @@ export interface SlideButtonsProps {
 const _SlideButtons: FC<SlideButtonsProps> = (props) => {
   const {
     onNextClick,
-    withShowAll = true,
-    showAllLink,
+    withButton = true,
+    buttonLink,
+    LinkTitle = "Смотреть все",
     onPrevClick,
     ...restProps
   } = props;
 
   return (
     <StyledSlideButtons {...restProps}>
-      {withShowAll &&
-        (showAllLink ? (
-          <Link href={showAllLink}>
+      {withButton &&
+        (buttonLink ? (
+          <Link href={buttonLink}>
             <Button variant="outlined" size="medium">
-              Смотреть все
+              {LinkTitle}
             </Button>
           </Link>
         ) : (
           <Button variant="outlined" size="medium">
-            Смотреть все
+            {LinkTitle}
           </Button>
         ))}
 

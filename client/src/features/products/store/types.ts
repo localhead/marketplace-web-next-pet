@@ -1,11 +1,11 @@
 export type BestsellerProductsResponse = {
   count: number;
-  rows: BoilerPartsRecord;
+  rows: BoilerPartsRecord[];
 };
 
 export type NewProductsResponse = {
   count: number;
-  rows: BoilerPartsRecord;
+  rows: BoilerPartsRecord[];
 };
 
 export type BoilerPartsRecord = {

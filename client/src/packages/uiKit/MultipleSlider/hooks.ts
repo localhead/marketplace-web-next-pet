@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
 export type UseMultipleSliderParams = {
   items: number;
@@ -14,13 +14,13 @@ export const useMultipleSlider = (params: UseMultipleSliderParams) => {
 
   const next = useCallback(() => {
     setCurrentOffset(
-      bounceOffset(protectedCurrentOffset + step, items, itemsInRow)
+      bounceOffset(protectedCurrentOffset + step, items, itemsInRow),
     );
   }, [items, itemsInRow, protectedCurrentOffset, step]);
 
   const prev = useCallback(() => {
     setCurrentOffset(
-      bounceOffset(protectedCurrentOffset - step, items, itemsInRow)
+      bounceOffset(protectedCurrentOffset - step, items, itemsInRow),
     );
   }, [items, itemsInRow, protectedCurrentOffset, step]);
 
@@ -32,7 +32,7 @@ export const useMultipleSlider = (params: UseMultipleSliderParams) => {
   };
 
   return {
-    currentOffset: protectedCurrentOffset,
+    currentOffset,
     setCurrentOffset,
     next,
     prev,
