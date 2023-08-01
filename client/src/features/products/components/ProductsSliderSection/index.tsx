@@ -32,7 +32,7 @@ export const _ProductsSliderSection: FC<ProductsSliderSectionProps> = (
     ? result?.data.rows
     : null;
 
-  console.log(resultData);
+  //console.log(resultData);
 
   // Adaptive and responsive config
   const width = useWindowWidth();

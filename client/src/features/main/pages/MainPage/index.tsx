@@ -13,6 +13,10 @@ export const MainPage: FC = () => {
         <AuthControlBadge />
         <ProductsSliderSection
           productsOption={ProductOptions.new}
+          title="Новинки"
+        />
+        <ProductsSliderSection
+          productsOption={ProductOptions.bestsellers}
           title="Хиты продаж"
         />
         <StyledTestContent />

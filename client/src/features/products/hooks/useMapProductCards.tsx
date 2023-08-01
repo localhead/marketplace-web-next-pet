@@ -4,7 +4,7 @@ import { BoilerPartsRecord } from "../store/types";
 
 export const useMapProductCards = (data: BoilerPartsRecord[] | null) => {
   return useMemo(() => {
-    return data?.slice(0, 10).map((item) => {
+    return data?.map((item) => {
       return <ProductCard key={item.id} data={item} />;
     });
   }, [data]);
