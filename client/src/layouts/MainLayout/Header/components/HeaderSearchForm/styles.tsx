@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@packages/icons";
-import { Input, colors } from "@packages/uiKit";
+import { Input, colors, zIndexes } from "@packages/uiKit";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -22,7 +22,7 @@ export const StyledInputContainer = styled.div``;
 export const StyledInputField = styled(Input)``;
 
 export const StyledAutocompleteDropdown = styled.div`
-  background-color: transparent;
+  background-color: ${colors.white};
   border: 1px solid ${colors.gray5};
   position: absolute;
   width: inherit;
@@ -33,6 +33,7 @@ export const StyledAutocompleteDropdown = styled.div`
   top: 0;
   margin-top: 40px;
   padding: 5px 5px;
+  z-index: ${zIndexes.dropdown};
 `;
 
 export const StyledRowItem = styled.div`
