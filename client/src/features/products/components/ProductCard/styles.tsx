@@ -4,7 +4,19 @@ import styled from "styled-components";
 
 export const StyledProductCard = styled.div``;
 
-export const StyledTitle = styled(Typography).attrs({
+export const StyledPriceTitle = styled(Typography).attrs({
+  size: 20,
+  weight: 400,
+  color: "dark",
+})``;
+
+export const StyledManufacturerTitle = styled(Typography).attrs({
+  size: 14,
+  weight: 400,
+  color: "dark1",
+})``;
+
+export const StyledNameTitle = styled(Typography).attrs({
   size: 16,
   weight: 500,
   color: "dark",

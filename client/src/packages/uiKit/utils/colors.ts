@@ -18,10 +18,9 @@ export const colors = {
 
   red: "#FF0100",
 
-  dark1: "#929292",
-  dark2: "#082F2F",
-  dark3: "#0E1F33",
-  dark4: "#314B70",
+  dark1: "#082F2F",
+  dark2: "#0E1F33",
+  dark3: "#314B70",
 
   //newGrays
 

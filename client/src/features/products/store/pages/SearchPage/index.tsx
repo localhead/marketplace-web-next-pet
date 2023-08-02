@@ -1,4 +1,7 @@
+import { GridAdaptive } from "@components/GridAdaptive";
+import { Space } from "@components/Space";
 import { StyledTestContent } from "@features/main/pages/MainPage/style";
+import { ProductCard } from "@features/products/components/ProductCard";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
 import { Container } from "@layouts/MainLayout/pageContentComponents/Container";
@@ -37,13 +40,16 @@ export const SearchPage: FC<SearchPageProps> = (props) => {
       <MainLayout>
         <MainLayout.Content>
           <AuthControlBadge />
-          <Container>{`Результаты поиска по запросу "${searchText}"`}</Container>
           <Container>
-            {searchResults.map((item) => {
-              return <div key={item.id}>{item.name}</div>;
-            })}
+            <Space size={25} />
+            {`Результаты поиска по запросу "${searchText}"`} <Space size={25} />
+            <GridAdaptive cols={5} columnGap={15} rowGap={25}>
+              {searchResults.map((item) => {
+                return <ProductCard key={item.id} data={item} />;
+              })}
+            </GridAdaptive>
+            <StyledTestContent />
           </Container>
-          <StyledTestContent />
         </MainLayout.Content>
       </MainLayout>
     </StyledSearchPage>

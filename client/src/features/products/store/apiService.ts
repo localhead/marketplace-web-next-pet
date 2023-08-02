@@ -4,6 +4,8 @@ import {
   BestsellerProductsResponse as GetBestSellersResponse,
   GetBySearchNameRequest,
   GetBySearchNameResponse,
+  GetFindByIdRequest,
+  GetFindByIdResponse,
   NewProductsResponse,
 } from "./types";
 
@@ -37,6 +39,12 @@ export const productsApi = createApi({
           url: "search/",
           method: "POST",
           body,
+        }),
+      }),
+      getFindById: builder.query<GetFindByIdResponse, GetFindByIdRequest>({
+        query: (body) => ({
+          url: `/find/${body.search}`,
+          method: "GET",
         }),
       }),
     };

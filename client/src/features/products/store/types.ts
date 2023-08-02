@@ -34,3 +34,9 @@ export type GetBySearchNameResponse = {
 export type GetBySearchNameRequest = {
   search: string | string[] | undefined | null;
 };
+
+export type GetFindByIdResponse = BoilerPartsRecord;
+
+export type GetFindByIdRequest = {
+  search: string;
+};
