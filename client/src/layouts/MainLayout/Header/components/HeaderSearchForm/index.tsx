@@ -21,6 +21,8 @@ interface HeaderSearchFormProps {
   style?: React.CSSProperties;
 }
 
+const SEARCH_DROPDOWN_LIMIT = 10;
+
 export const _HeaderSearchForm: FC<HeaderSearchFormProps> = (props) => {
   const { ...restProps } = props;
 
@@ -95,6 +97,7 @@ export const _HeaderSearchForm: FC<HeaderSearchFormProps> = (props) => {
       pathname: paths.searchProducts(),
       query: newQuery,
     });
+    setIsVisible(false);
   };
 
   return (
@@ -130,6 +133,7 @@ export const _HeaderSearchForm: FC<HeaderSearchFormProps> = (props) => {
                     </StyledLink>
                   );
                 })
+                .slice(0, SEARCH_DROPDOWN_LIMIT)
                 .concat([
                   <Button
                     size="small"

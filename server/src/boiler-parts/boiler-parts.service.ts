@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
+import { Op } from 'sequelize';
 import { BoilerParts } from './boiler-parts.model';
 import { IBoilerPartsQuery } from './types';
-import { Op } from 'sequelize';
 
 // Step 39 - Напишем первые методы для получения наших товаров
 @Injectable()
@@ -52,7 +52,7 @@ export class BoilerPartsService {
     str: string,
   ): Promise<{ count: number; rows: BoilerParts[] }> {
     return this.boilerPartsModel.findAndCountAll({
-      limit: 10,
+      limit: 100,
       where: { name: { [Op.like]: `%${str}%` } },
     });
   }

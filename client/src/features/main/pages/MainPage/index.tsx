@@ -14,7 +14,8 @@ export const MainPage: FC = () => {
         <ProductsSliderSection
           productsOption={ProductOptions.new}
           title="Новинки"
-        />
+        />{" "}
+        <Space size={80} />
         <ProductsSliderSection
           productsOption={ProductOptions.bestsellers}
           title="Хиты продаж"

@@ -1,3 +1,4 @@
+import { Space } from "@components/Space";
 import { StyledPriceTitle } from "@features/products/components/ProductCard/styles";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
@@ -30,6 +31,7 @@ export const ProductDetailPage: FC<ProductDetailPageProps> = (props) => {
     <MainLayout>
       <MainLayout.Content>
         <AuthControlBadge />
+        <Space size={25} />
         {isSuccess && (
           <Container>
             <StyledImage src={urls[0]} alt="product card image" />{" "}
@@ -39,6 +41,7 @@ export const ProductDetailPage: FC<ProductDetailPageProps> = (props) => {
             {`Карточка товара с id ${idNumber}`}
           </Container>
         )}
+        <Space size={150} />
       </MainLayout.Content>
     </MainLayout>
   );
