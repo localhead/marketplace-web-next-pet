@@ -2,8 +2,11 @@ import { StyledFooter } from "./styles";
 
 import { Container } from "../pageContentComponents/Container";
 
+import { Space } from "@components/Space";
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import React, { FC, memo } from "react";
+import { FooterBottomLineSection } from "./components/FooterBottomLineSection";
+import { FooterMainSections } from "./components/FooterMainSections";
 
 export interface FooterProps {
   className?: string;
@@ -20,14 +23,18 @@ const _Footer: FC<FooterProps> = (props) => {
   if (isDesktop) {
     return (
       <StyledFooter {...restProps}>
-        <Container>Footer element</Container>
+        <Container>
+          <FooterMainSections />
+          <Space size={60} />
+          <FooterBottomLineSection />
+        </Container>
       </StyledFooter>
     );
   }
 
   return (
     <StyledFooter {...restProps}>
-      <Container>Footer element</Container>
+      <Container></Container>
     </StyledFooter>
   );
 };

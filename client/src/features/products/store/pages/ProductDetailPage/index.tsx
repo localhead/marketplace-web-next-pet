@@ -1,5 +1,3 @@
-import { StyledTestContent } from "@features/main/pages/MainPage/style";
-
 import { StyledPriceTitle } from "@features/products/components/ProductCard/styles";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
@@ -41,8 +39,6 @@ export const ProductDetailPage: FC<ProductDetailPageProps> = (props) => {
             {`Карточка товара с id ${idNumber}`}
           </Container>
         )}
-
-        <StyledTestContent />
       </MainLayout.Content>
     </MainLayout>
   );

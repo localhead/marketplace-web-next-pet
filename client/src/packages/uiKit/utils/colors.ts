@@ -2,8 +2,6 @@ export const colors = {
   primary: "#222222",
   primaryLight: "#727272",
 
-  dark: "#222222",
-
   gray1: "#797979",
   gray2: "#E9E9E9",
   gray3: "#B6B6B6",
@@ -18,10 +16,11 @@ export const colors = {
 
   red: "#FF0100",
 
-  dark1: "#082F2F",
-  dark2: "#0E1F33",
-  dark3: "#314B70",
-
+  dark: "#222222",
+  dark1: "#141414",
+  dark2: "#1C1C1C",
+  dark3: "#2C2C2C",
+  dark4: "#3C3C3C",
   //newGrays
 
   white: "#fff",

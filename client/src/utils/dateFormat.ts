@@ -7,6 +7,7 @@ export type DateFormat =
   | "HH:MM"
   | "DD.MM.YYYY"
   | "DD month YYYY"
+  | "YYYY"
   | "DD month";
 
 setDefaultOptions({
@@ -34,6 +35,9 @@ export const formatDate = (
       }
       case "DD month": {
         return format(dateObj, "d MMMM");
+      }
+      case "YYYY": {
+        return format(dateObj, "yyyy");
       }
     }
   } catch (e) {

@@ -1,4 +1,5 @@
 import localFont from "@next/font/local";
+import { colors } from "@packages/uiKit";
 
 import "antd/dist/antd.min.css";
 
@@ -75,20 +76,25 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body::-webkit-scrollbar {
-    width: 8px;
+    width: 16px;
   }
 
   body::-webkit-scrollbar-track {
     background-color: transparent;
+    border-radius: 8px;
   }
 
   body::-webkit-scrollbar-thumb {
-    background-color: #454545;
-    border-radius: 3px;
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: ${colors.dark};
+
   }
 
   body::-webkit-scrollbar-thumb:hover {
-    background-color: gray;
+    background-color: ${colors.gray1};
   }
 
 

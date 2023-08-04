@@ -2,6 +2,7 @@ import { SlideButtons } from "@components/SlideButtons";
 import { useMapProductCards } from "@features/products/hooks/useMapProductCards";
 import { BoilerPartsRecord } from "@features/products/store/types";
 
+import { Space } from "@components/Space";
 import { useWindowWidth } from "@features/adaptive/useWindowWidth";
 import { MultipleSlider } from "@packages/uiKit/MultipleSlider";
 import { useMultipleSlider } from "@packages/uiKit/MultipleSlider/hooks";
@@ -57,6 +58,7 @@ export const _ProductsSliderSection: FC<ProductsSliderSectionProps> = (
         onPrevClick={prev}
         LinkTitle="Все котики"
       />
+      <Space size={25} />
       <MultipleSlider isSquare={true} {...multipleSliderProps}>
         {productItems}
       </MultipleSlider>

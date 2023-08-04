@@ -1,6 +1,5 @@
 import { GridAdaptive } from "@components/GridAdaptive";
 import { Space } from "@components/Space";
-import { StyledTestContent } from "@features/main/pages/MainPage/style";
 import { ProductCard } from "@features/products/components/ProductCard";
 import { AuthControlBadge } from "@features/user/components/AuthControlBadge";
 import { MainLayout } from "@layouts/MainLayout";
@@ -48,7 +47,6 @@ export const SearchPage: FC<SearchPageProps> = (props) => {
                 return <ProductCard key={item.id} data={item} />;
               })}
             </GridAdaptive>
-            <StyledTestContent />
           </Container>
         </MainLayout.Content>
       </MainLayout>
