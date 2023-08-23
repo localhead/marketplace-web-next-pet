@@ -1,3 +1,4 @@
+import { profileNavigationList } from "@features/profile/constants";
 import { paths } from "@features/routering/paths";
 import { useAppDispatch, useAppSelector } from "@features/store";
 import { logout } from "@features/user";
@@ -20,30 +21,6 @@ interface PopoverContentProps {
 
   onClose: () => void;
 }
-
-type PopoverNavigationItem = {
-  label: string;
-  link: string;
-};
-
-const popoverNavigationList: PopoverNavigationItem[] = [
-  {
-    label: "Персональные данные",
-    link: paths.notImplemented(),
-  },
-  {
-    label: "Заказы и возвраты",
-    link: paths.notImplemented(),
-  },
-  {
-    label: "Отзывы и вопросы",
-    link: paths.notImplemented(),
-  },
-  {
-    label: "Управление подписками",
-    link: paths.notImplemented(),
-  },
-];
 
 export const _PopoverContent: FC<PopoverContentProps> = (props) => {
   const { onClose, ...restProps } = props;
@@ -77,7 +54,7 @@ export const _PopoverContent: FC<PopoverContentProps> = (props) => {
         <StyledCloseIcon onClick={onClose} size={20} />
       </TopContentContainer>
       <MiddleContentContainer>
-        {popoverNavigationList.map((item, index) => {
+        {profileNavigationList.map((item, index) => {
           return (
             <CustomButton
               key={index}
@@ -91,7 +68,6 @@ export const _PopoverContent: FC<PopoverContentProps> = (props) => {
         })}
       </MiddleContentContainer>
       <BottomContentContainer>
-        {" "}
         <CustomButton onClick={logoutClickHandler}>Выйти</CustomButton>
       </BottomContentContainer>
     </StyledPopoverContent>
